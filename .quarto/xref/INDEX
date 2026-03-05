@@ -1,0 +1,35 @@
+{
+  "macros.qmd": {
+    "macros.html": "d57940ee"
+  },
+  "list-of-stilltodo.qmd": {
+    "list-of-stilltodo.html": "16c52ed8"
+  },
+  "list-of-mathstuff.qmd": {
+    "list-of-mathstuff.html": "c95d0768"
+  },
+  "Revision.qmd": {
+    "Revision.html": "bad83350"
+  },
+  "Talk.qmd": {
+    "Talk.html": "1395af03"
+  },
+  "Lecture4.qmd": {
+    "Lecture4.html": "2bc38dbd"
+  },
+  "app-rtm.qmd": {
+    "app-rtm.html": "8bdd93af"
+  },
+  "index.qmd": {
+    "index.html": "70e8e1fe"
+  },
+  "app-ert.qmd": {
+    "app-ert.html": "ea3d44bd"
+  },
+  "app-mre.qmd": {
+    "app-mre.html": "e7879292"
+  },
+  "app-walls.qmd": {
+    "app-walls.html": "3f2558ea"
+  }
+}

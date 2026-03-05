@@ -1,0 +1,159 @@
+{{< include macros.qmd >}}
+
+## Resin Transfer Moulding (RTM) 
+### RTM: context
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+Manufacturing composite materials
+
+**Uses of composite materials:** Aerospace, automotive and marine industries. 
+
+**Benefits:** High-performance, lightweight, flexibility to accommodate complex designs
+
+**Manufacturing Involves:**  \textit{Automatic Fibre Placement:} A robotic system lays down fibre tapes into a tool. \textit{Resin Transfer Molding (RTM).} 
+
+
+:::
+
+::: {.column width="50%"}
+
+![](Figs/B787_composite.jpg){width=100%}
+
+
+:::
+
+:::
+
+
+## RTM: Process{.scrollable}
+
+
+![](Figs/RTM1.jpg){width=100%}
+
+
+
+
+## Defects in RTM
+
+::: {layout-ncol=2}
+![](Figs/ICIAM2.jpg)
+
+![](Figs/ICIAM3.jpg)
+:::
+
+## Inverse Problem in RTM
+
+[**Objective:**]{.alert} Infer physical properties of the reinforcement given pressure measurements during resin injection.
+
+
+[**Application:**]{.alert} Active control and Non-destructive Evaluation (NDE)
+
+::: {.columns}
+
+::: {.column width="70%"}
+
+```{=html}
+<div style="
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+">
+  <video id="rtmvid"
+         controls
+         autoplay
+         muted
+         loop
+         playsinline
+         style="
+           max-height:60vh;
+           max-width:100%;
+           border-radius:12px;
+         "
+         onloadedmetadata="this.currentTime = 20;">
+    <source src="videos/RTM.mp4" type="video/mp4">
+  </video>
+</div>
+```
+:::
+
+::: {.column width="30%"}
+
+
+
+:::
+
+:::
+
+
+## Resin Injection Model
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: callout-note
+
+## Forward Problem: 
+
+Find $(\blue{p,\Upsilon})$ given  $\red{u}=\red{(\kappa,\phi)}$.
+
+Darcy flow:
+$$
+- \nabla \cdot \Big[ \frac{ \red{\kappa(x)}}{\mu} \nabla \blue{p(x,t)} \Big] = 0,\quad \textrm{in}~ \Omega(t) \nonumber
+$$
+Moving front: $x\in \Upsilon(t)$:
+$$ \frac{d \blue{\Upsilon(t)}}{dt}=  -  \frac{\red{\kappa(x)}}{\red{\phi(x)} \mu} \nabla \blue{p(x,t)} \cdot \mathbf{n}(x,t) \nonumber
+$$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](Figures/resin_domain2.png)
+
+
+:::
+
+:::
+
+::: callout-important
+
+## Inverse Problem
+
+Find $\red{(\kappa(x),\phi(x))}$ given measurements of $\blue{p(x_{1}),\dots,p(x_{M})}$.
+
+:::
+
+## Goal 1: Characterisation of material properties (with uncertainty)
+
+![](Figs/Goal1.png)
+
+## Goal 2: Calibrated Model (for active control)
+Needs deep learning surrogate!
+
+![](Figures/Experiment4.png)
+
+
+
+[[Back to Applications menu]{.button}](index.html#apps-hub)
+
+
+## Prior
+
+![](Figures/prior_pairs.png)
+
+## Posterior
+
+
+![](Figures/posterior_pairs.png)
+
+<div class="backhub">
+  ↩ <a href="index.html">Volver al inicio</a>
+</div>
+[[Back to Applications menu]{.button}](#apps-hub)

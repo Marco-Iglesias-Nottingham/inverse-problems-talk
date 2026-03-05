@@ -1,0 +1,87 @@
+{{< include macros.qmd >}}
+
+## Magnetic Resonance Elastography {.scrollable}
+
+
+Aim: Remote palpation by shear waves, i.e. tomographic quantification of shear modulus of biological tissue.
+
+
+
+
+::: columns
+::: {.column width="60%"}
+
+- Induce excitation at a given frequency (e.g. 50Hz).
+
+
+- Measure (complex) displacements $\blue{\bfu(\bfx)}$ via MRI (Motion encoding gradient).
+
+
+
+- Invert displacements to find 
+shear modulus $\red{G(\bfx)}$: viscoelastic properties
+
+:::
+::: {.column width="40%"}
+
+
+![](Figs_for_MRE/Set1.png){width=95%}
+
+
+
+
+
+:::
+
+:::
+
+
+A: T1/T2 weighted} B: $\vert \bfu(\bfx)\vert$ C: $\vert G(\bfx)\vert\qquad$. 
+
+![](Figs_for_MRE/Set2.png){width=100%}
+
+Images From: Tan CH, Venkatesh SK. MRE and Other Magnetic Resonance Imaging Techniques in Chronic Liver Disease: Current Status and Future Directions.  Gut and Liver 2016;10:672-686
+
+
+
+## Forward/Inverse Problem in MRE {.scrollable}
+
+::: callout-note
+
+## Forward Model
+
+Time-harmonic isotropic linear viscoelastic equations
+$$
+\rho \omega^2 \blue{\bfu} +\nabla \cdot \big[ \red{G} (\nabla \blue{\bfu} +(\nabla \blue{\bfu})^{T})\big]+\nabla (\red{\lambda} \nabla \cdot \blue{\bfu})=\mathbf{0},\qquad \text{in}~ \Omega,
+$$
+:::
+
+- Known quantities:  $\omega$ (frequency) and $\rho\approx 10^{3}\text{kg}/\text{m}^3$.  \\
+
+- Unknown quantities: BCs, $\lambda(\bfx)$ and $G(\bfx)$
+
+- Measured quantities (via MRI):  $\bfu_{M}\equiv (\bfu(\bfx_{1}),\dots,\bfu(\bfx_{M}))$
+
+
+
+::: callout-important
+
+## Inverse Problem
+
+Find the shear modulus $G(\bfx)=G_{s}(\bfx)+iG_{l}(\bfx),$ given measurements of  $\bfu_{M}\equiv (\bfu(\bfx_{1}),\dots,\bfu(\bfx_{M}))$.
+
+:::
+
+$\red{G_{s}(\bfx)}$: storage modulus. $\red{G_{l}(\bfx)}$: loss modulus. 
+
+
+## Characterisation: 
+
+
+
+![](Figs_for_MRE/for_talk1.png){width=100%}
+
+
+::: backhub
+↩ <a href="index.html">Volver al inicio</a>
+:::

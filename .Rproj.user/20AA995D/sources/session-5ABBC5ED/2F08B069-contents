@@ -1,0 +1,1547 @@
+---
+title: Computational Inverse Problems 
+subtitle: From manufacturing and civil engineering <br> to geophysics and medical imaging. 
+
+author:
+  - name: Marco Iglesias
+    affiliations: School of Mathematical Sciences
+title-slide-attributes:
+  class: "title-slide qr-only"
+#  class: title-slide
+#  id: first-title
+  data-background-image: Figs/Tower.png
+  #data-background-size: 100%
+  data-background-size: cover
+  data-background-position: left
+#  data-background-opacity: "0.35"   # ← fade amount
+  #logos/UoNTransparent.png
+#  data-background-size: 20%
+#  data-background-position: "18% 8%"
+format:
+  clean-revealjs:
+    self-contained: false
+    show-notes: false
+
+header-includes:
+  - |
+    <style>
+    /* Only the real title slide */
+    .reveal .slides section.qr-only { position: relative; }
+    .reveal .slides section.qr-only::after {
+      content: "";
+      position: absolute;
+      left: 840px;
+      bottom: -50px;
+      width: 180px;
+      height: 180px;
+      background-image: url("inverse-problems-talk-qr.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    /* keep your MathJax tweak */
+    mjx-container[jax="CHTML"] { opacity: 0.75 !important; }
+    
+    /* make the deck font explicit so divs inherit it too */
+    .reveal {
+      font-family: var(--r-main-font, inherit) !important;
+      font-weight: 500;
+    }
+    
+    /* app grid/cards */
+    .reveal .app-grid{
+      display:grid;
+      grid-template-columns: repeat(1, minmax(280px, 1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .reveal .app-card{
+      display:block;
+      padding:18px 18px 16px 18px;
+      border-radius:16px;
+      border:1px solid rgba(120,120,120,.35);
+      text-decoration:none !important;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .reveal .app-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.12);
+    }
+    .reveal .app-title{
+      font-size:1.1em;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    
+    /* IMPORTANT: only ONE desc rule, scoped, closed */
+    .reveal .app-desc{
+      font-family: inherit !important;
+      font-size:0.9em;
+      font-weight:400;
+      opacity:.85;
+      line-height:1.25;
+    }
+    
+    .reveal .backhub{ font-size:0.75em; opacity:.9; margin-bottom:10px; }
+    .reveal .backhub a{ text-decoration:none !important; }
+    .reveal .app-grid p { margin: 0 !important; }
+    .reveal .app-grid p:has(> .app-card) { display: contents; }
+    </style>
+
+    
+
+---
+
+
+{{< include macros.qmd >}}
+
+
+
+## Nottingham
+
+:::{.r-stack}
+
+![](Figs/nott1.png){.fragment width=100%}
+
+![](Figs/nott2.jpg){.fragment width=100% style="transform: translateX(-90%);"}
+
+![](Figs/nott3.jpg){.fragment width=100% style="transform: translateX(90%);"}
+
+![](Figs/nott4.png){.fragment width=100% style="transform: translateY(-40%);"}
+
+
+![](Figs/nott5.jpg){.fragment width=100% style="transform: translateY(70%);"}
+
+:::
+
+## University of Nottingham
+
+
+::: {.columns }
+
+
+::: {.column width="60%"}
+
+
+- Five faculties: 
+  - Arts 
+  - Engineering
+  - Medicine and Health Sciences 
+  - Science 
+  - Social Sciences
+
+
+
+
+:::
+
+::: {.column width="40%"}
+
+
+![](Figs/nott6.jpg)
+
+:::
+
+
+:::
+
+
+- ~35,000 students in Nottingham, ~5,000 in Malaysia ~8,000 in China
+- Top 100 2026 QS World University Rankings
+- University Park Campus, one of the UK’s most attractive university campuses.
+
+
+## School of Mathematical Sciences
+
+
+::: {.columns }
+
+- ~ 80 academic staff.
+- Annual intake of approximately 250-300 Undergraduates
+
+::: {.column width="50%"}
+
+
+Research Sections
+
+- Applied Mathematics
+
+- Pure Mathematics
+
+- Statistics and Probability
+
+- Mathematical Physics
+
+- Mathematics Education
+
+
+
+:::
+
+::: {.column width="50%"}
+
+
+![](Figs/nott7.jpg)
+
+:::
+
+
+:::
+
+
+
+## Outline
+
+
+:::{=html}
+<div class="app-grid">
+
+<a class="app-card" href="#/motivation">
+  <div class="app-desc">
+    Motivation for PDE-costrained Inverse Problems
+  </div></a>
+<a class="app-card" href="#/EKI">
+  <div class="app-desc">
+    Inverse Problem Framework (Ensemble Kalman Inversion).
+  </div>
+</a>
+<a class="app-card" href="#/level">
+  <div class="app-desc">
+    Parameterisation for Anomaly Characterisation.
+  </div>
+</a>
+<a class="app-card" href="#/apps-hub2">
+  <div class="app-desc">
+    Application Examples
+  </div>
+</a>
+<a class="app-card" href="#/areas">
+  <div class="app-desc">
+    Future Work and Opportunities for Collaboration
+  </div>
+</a></div>
+:::
+
+
+
+
+# Motivation {#motivation background-color="#2C7FB8"}
+
+## PDE-constrained Inverse Problems
+[**Aim:**]{.fg style="--col: #e64173"} Infer unknown parameters in PDE(s) given measurements of the solution of the PDE(s).
+
+
+::: {.columns style="margin-bottom: 0;"}
+
+
+::: {.column width="50%"}
+
+::: {.callout-note style="margin-bottom: 0em;"}
+## Forward Problem
+Given $\red{\kappa(x)}$, $\red{f(x) }$ and $\red{p_0}$, find $\blue{p(x)}$ such that
+$$
+\begin{aligned}
+- \nabla \!\cdot\! \big(\red{\kappa(x)}\color{black}{\nabla} \blue{p(x)} \big)&= \red{f(x) }
+&& x\in \Omega, \\
+\blue{p(x)} &= \red{p_0}
+&&x\in \partial\Omega .
+\end{aligned}
+$$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+
+::: callout-important
+## Inverse Problem
+
+Given $\blue{p(x)}$, find $\red{\kappa(x)}$, $\red{f(x) }$ and $\red{p_0}$ such that 
+$$
+\begin{aligned}
+- \nabla \!\cdot\! \big(\red{\kappa(x)}\nabla \blue{p(x)} \big)&= \red{f(x) }
+&& x\in \Omega, \\
+\blue{p(x)} &= \red{p_0}
+&&x\in \partial\Omega .
+\end{aligned}
+$$
+
+:::
+:::
+:::
+
+**Overarching Applications of Inverse Problems:** 
+
+- Model calibration e.g. $\red{\kappa(x)}$, may be partially known (cannot be measured directly) or subject to [**uncertainty**]{.fg style="--col: #e64173"}. 
+
+- Tomography: inference of physical properties e.g.$\red{\kappa(x)}$
+
+
+
+## Application Examples {#apps-hub}
+
+
+:::{=html}
+<div class="app-grid">
+
+<a class="app-card" href="#/app-rtm">
+  <div class="app-title">Composite Manufacturing</div>
+  <div class="app-desc">
+    Resin Transfer Moulding.
+  </div></a>
+<a class="app-card" href="#/app-ert">
+  <div class="app-title">Geophysics</div>
+  <div class="app-desc">
+    Electrical Resistivity Tomography.
+  </div>
+</a>
+<a class="app-card" href="#/app-walls">
+  <div class="app-title">Built Environment</div>
+  <div class="app-desc">
+    Characterisation of thermal bridges in walls.
+  </div>
+</a>
+<a class="app-card" href="#/app-mre">
+  <div class="app-title">Medical Imaging</div>
+  <div class="app-desc">
+    Magnetic Resonance Elastography.
+  </div>
+</a></div>
+:::
+
+
+
+
+# Inversion Framework {#EKI background-color="#2C7FB8"}
+
+
+
+## General framework {.scrollable}
+
+**Forward Problem (FP)**:
+
+$$
+\left\{
+\begin{aligned}
+\textit{Model Equations (MEs):} &\quad \mathcal{M}(\red{u},\blue{p}) = 0 \\
+\textit{Prediction of QoI:} &\quad \blue{d} = \mathcal{H}(\blue{p})
+\end{aligned}
+\right.
+$$
+**Forward Map:**  $\red{u}\xrightarrow{\;\;\mathcal{F}\;\;} \blue{d}=\mathcal{F}(\red{u})$
+
+[**Inverse Problem (IP)**:]{.alert} 
+
+Find $\red{u^{\dagger}}$ (the truth) given  measurements, $\color{#0044cc}{d^{\eta}}$ of $d^{\dagger}=\mathcal{F}(\red{u^{\dagger}})$.
+
+Common (modelling) assumption:
+$$
+\begin{align*}
+\blue{d^{\eta}}&=\overbrace{\mathcal{F}(\red{u^{\dagger}})}^{d^{\dagger}}+\eta,\qquad \eta: measurement~noise
+\end{align*}
+$$
+
+[**Classical approaches**]{.alert}
+
+Least-squares:
+$$
+u^{\eta}=\argmin_{u\in U}~~\overbrace{ \norm{ \blue{d^{\eta}}-\mathcal{F}(\red{u})}^2}^{data~misfit}
+$$
+
+<details>
+<summary>Ill-posedness</summary>
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+  - Lack of uniqueness 
+  - Lack of stability 
+    - small $\eta\Rightarrow u^{\eta}\not\to u^{\dagger}$
+
+:::
+
+::: {.column width="50%"}
+
+![](Figs/cat.png){width=80%}
+
+:::
+
+:::
+
+</details>
+
+
+<details>
+<summary>Addressing stability: Regularisation</summary>
+
+- Regularise then Optimise e.g. Tikhonov
+
+$$u^{\eta}=\argmin_{u\in U}~~\overbrace{ \norm{ \blue{d^{\eta}}-\mathcal{F}(\red{u})}^2}^{data~misfit}+\overbrace{\alpha\norm{ \red{u}}_{\mathcal{R}}^2}^{regularisation}$$ 
+
+- Regurlise within the optimiser:
+
+  - Iterarively-regularised Gauss-Newton
+  - Landweber iteration
+  - regularising Levenberg-Marquardt
+
+</details>
+
+
+
+Limitations of Regularisation:
+
+- Does not address uniqueness
+
+- Does not quantify uncertainty
+
+- Requires derivative $D\cF$ (and its adjoint $D\cF^*$)
+
+- Not straightforward to incorporate discontinuities of $\red{u(x)}$
+
+
+
+
+
+
+
+[**Quantifying Uncertainty**:]{.alert} The Bayesian Approach
+
+- Put a prior on $\red{u}$: $\mathbb{P}(\red{u})$. 
+
+- Find the posterior
+
+$$
+\mathbb{P}(\red{u}\vert \blue{d^{\eta}})\propto \overbrace{\mathbb{P}(\red{u})}^{prior}\overbrace{\mathbb{P}(\blue{d^{\eta}}\vert \red{u})}^{likelihood}
+$$
+
+[**Challenges**:]{.alert}
+
+
+- In general $\mathbb{P}(\red{u}\vert \blue{d^{\eta}})$ does not admit closed-form solution
+
+- Sampling of $\mathbb{P}(\red{u}\vert \blue{d^{\eta}})$ (e.g. via MCMC) is computationally unfeasible.
+
+  - Recall $\red{u}$ is a function (i.e. high-dimensional after discretisation). 
+
+- How to incorporate discontinuities of $\red{u}$.
+
+## Ensemble Kalman Inversion (EKI)  {.scrollable}
+
+
+
+Assumption $\blue{d^{\eta}}=\mathcal{F}(\red{u^{\dagger}})+\eta,\qquad \eta\sim N(0,\Gamma)$
+
+Hence posterior:
+$$
+\mathbb{P}(\red{u}\vert \blue{d^{\eta}})\propto \mathbb{P}(\red{u})\exp\Big[-\frac{1}{2}\norm{\Gamma^{-1/2}(\blue{d^{\eta}}-\mathcal{F}(\red{u}))}^2 \Big]
+$$
+
+[**Main idea:**]{.fg style="--col: #e64173"} Construct particle/sample approximations of internediate measures
+
+$$\mathbb{P}(\red{u})=\mathbb{P}_{0}(\red{u})\mapsto \mathbb{P}_{1}(\red{u})\mapsto\dots \mathbb{P}_{N}(\red{u})=\mathbb{P}(\red{u}\vert \blue{d^{\eta}})$$
+
+::: {.callout-tip}
+
+## EKI Algorithm
+
+Start with samples from the prior: $\{u^{(j)}\}_{j=1}^{J}$, $u^{(j)}\sim \mathbb{P}(u)$
+
+For $n=0,\dots, N$:
+
+- Compute $\cF^{(j)}:=\cF(u^{(j)})$
+- Compute 
+$$
+\displaystyle\mathcal{C}^{\cF\cF} = \frac{1}{J-1}\sum_{j=1}^J\big(\cF^{(j)}- \bar{\cF}\big)\otimes\big(\cF^{(j)}-\bar{\cF}\big)\qquad 
+  \displaystyle\mathcal{C}^{u\cF} = \frac{1}{J-1}\sum_{j=1}^J\big(u^{(j)} - \bar{u}\big)\otimes\big(\cF^{(j)}-\bar{\cF}\big)
+  $$
+  
+  where $\displaystyle\bar{\cF} = \frac{1}{J}\sum_{j=1}^J \cF^{(j)}$ and $\displaystyle \bar{u} = \frac{1}{J}\sum_{j=1}^J u^{(j)}$\;
+
+- Update each particles, at eah iteration:
+
+$$
+u^{(j)}\leftarrow u^{(j)}+C^{u\cF}(C^{\cF \cF} +\alpha_{n}\Gamma  )^{-1}(d^{\eta}+\sqrt{\alpha_n}\xi-\cF(u^{(j)}))$$
+where $\xi\sim N(0,\Gamma)$ and $\alpha_{n}$ is a regularisation/tempering parameter. 
+
+:::
+
+- [**EKI is derivative/Jacobian free**]{.bg style="--col: #e64173"}.
+- EKI is a heuristic approximate method
+  - in general it does not provide samples of the exact posterior.
+
+
+
+## Informal Derivation of EKI {.scrollable}
+See [@Iglesias_2021]
+<details>
+  <summary>
+  [**Tempering:**]{.alert} Build transitions between prior and posterior     
+$$\mathbb{P}(\red{u})=\mathbb{P}_{0}(\red{u})\mapsto \mathbb{P}_{1}(\red{u})\mapsto\dots \mathbb{P}_{N}(\red{u})=\mathbb{P}(\red{u}\vert \blue{d^{\eta}})$$
+  </summary>
+  Define
+  $$\mathbb{P}_{n}(\red{u})\propto \mathbb{P}(\red{u})\exp\Big[-\frac{\xi_{n}}{2}\norm{\Gamma^{-1/2}(\blue{d^{\eta}}-\mathcal{F}(\red{u}))}^2 \Big]$$
+  with $0= \xi_{0}<\xi_{1}<\dots<\xi_{N+1}=1$.
+  Then write recursively:
+  $$\mathbb{P}_{n+1}(\red{u})\propto \mathbb{P}_{n}(\red{u})\exp\Big[-\frac{1}{2}\norm{(\alpha_{n}\Gamma)^{-1/2}(\blue{d^{\eta}}-\mathcal{F}(\red{u}))}^2 \Big]$$
+  where $\alpha_{n}=(\xi_{n+1}-\xi_{n})^{-1}$
+  
+</details>
+
+<details>
+  <summary> Linearise $\mathcal{F}(\red{u})$ around the mean of $\mathbb{P}_{n}(\red{u})$.
+</summary>
+
+  $$\mathbb{P}_{n+1}(\red{u})\propto \mathbb{P}_{n}(\red{u})\exp\Big[-\frac{1}{2}\norm{(\alpha_{n}\Gamma)^{-1/2}(\blue{d^{\eta}}-\mathcal{F}(m_{n})-D\mathcal{F}(m_{n})(\red{u}-m_n))}^2 \Big]$$
+</details>
+
+
+<details>
+  <summary> Gaussianise $\mathbb{P}_{n}(\red{u})\approx N(m_{n},C_{n})$ so the linearised problem is solved in closed form for the Gaussian $\mathbb{P}_{n+1}(\red{u})=N(m_{n+1}, C_{n+1})$
+</summary>
+$$
+\begin{aligned}
+m_{n+1}=&m_{n}+C_{n}D\cF_n^{*}(D\cF_nC_{n}\,D\cF_n^{*} +\alpha_{n}\Gamma   )^{-1}(d^{\eta}-\cF_n)\\
+C_{n+1}=&C_{n}-C_{n}D\cF_n^{*}(D\cF_nC_{n}\,D\cF_n^{*} +\alpha_{n}\Gamma   )^{-1}D\cF_nC_{n}
+\end{aligned}
+$$
+where $\cF_{n}=D\cF(m_{n})$
+</details>
+
+
+<details>
+  <summary> Approximate derivatives with covariances 
+  </summary>
+  If $u_{n}\sim N(m_{n},C_{n})$, then  
+$$
+\begin{aligned}
+\E[\cF(u_{n})] \simeq &\cF_n \\
+\co[\cF(u_{n})] \simeq   &D\cF_nC_{n}D\cF_n^{*},\\
+\co[u_{n},\cF(u_{n})] \simeq  & C_{n}D\cF_n^{*}.
+\end{aligned}
+$$
+
+Hence
+$$
+\begin{aligned}
+m_{n+1}\simeq &m_{n}+\red{\co[u_{n},\cF(u_{n})]}(\red{\co[\cF(u_{n})]}+\alpha_{n}\Gamma   )^{-1}(d^{\eta}-\red{\E_{n}[\cF(u_{n})]})\\
+C_{n+1}\simeq &C_{n}-\red{\co[u_{n},\cF(u_{n})]}(\red{\co[\cF(u_{n})]}+\alpha_{n}\Gamma   )^{-1}\red{\co[\cF(u_{n}),u_{n}]}
+\end{aligned}
+$$
+</details>
+
+<details>
+  <summary> Use sample approximations of expectations/covariances 
+  </summary>
+$$\mathbb{P}_{n}(u_n)\simeq \mathbb{P}_{n}^{J}(u_n):=\frac{1}{J}\sum_{j=1}^{J}\delta_{u_{n}^{(j)}},\qquad u_{n}^{(j)}\sim\mathbb{P}_{n}(u_n)=N(m_{n},\mathcal{C}_{n})$$
+$$u_{n+1}^{(j)}=u_{n}^{(j)}+C_{n}^{u\cF}(C_{n}^{\cF \cF} +\alpha_{n}\Gamma  )^{-1}(d^{\eta}+\sqrt{\alpha_n}\xi_{n}^{(j)}-\cF(u_{n}^{(j)}))$$
+where $\xi_{n}^{(j)}\sim N(0,I)$ and $C_{n}^{u\cF}$ and $C_{n}^{\cF\cF}$ are the sample approximations of $\red{\co[u_{n},\cF(u_{n})]}$ and $\red{\co[\cF(u_{n})]}$, respectively 
+</details>
+
+
+## EKI history {.scrollable}
+
+
+
+- Oceanography and Meteorology: 
+  -   Ensemble Kalman Filter [@Evensen;@Burgers]
+
+- (Oil) Reservoir applications: EnKF for parameter estimation. [@Naevdal;@Gu]
+
+- Adapted EnKF as an [**iterative solver**]{.alert} for  PDE-constrained Inverse Problems = EKI [@IglesiasEnKF] 
+
+- EKI as an **iterative regulariser**: [@EnsembleYO]
+
+- EKI as **Gaussian approximation** within a tempering scheme [@RTM;@Iglesias_2021]
+
+- EKI as a system of SDEs [@Schillings02012018]
+
+- mean-field perspective of EKI [@Calvello]
+
+
+
+
+# Parameterisation for Anomaly Characterisation {#level background-color="#2C7FB8"}
+
+## Inferring Discontinuous Properties
+
+- Recall **Forward Map:**  $\red{u}\xrightarrow{\;\;\mathcal{F}\;\;} \blue{d}=\mathcal{F}(\red{u})$
+- For $\red{u}$ discontinuous (or piecewise-continuous), how to define $\mathbb{P}(\red{u})$?
+
+:::{.r-stack}
+
+![](Figs/seq3.jpg){.fragment width=70%}
+
+![](Figs/seq2.png){.fragment width=100%}
+
+
+
+![](Figs/seq4.png){.fragment width=40%}
+
+
+![](Figs/seq1.jpg){.fragment width=100%}
+
+:::
+
+
+
+
+## Level-set random field parameterisation {.scrollable}
+### Example in 2D. 
+
+Unknown physical property $\kappa(x)=\left\{\begin{array}{cc} \kappa_1(x)&\textrm{if}~x\in \Omega_{A},\\
+\kappa_2(x)&\textrm{if}~x\notin \Omega_{A}.\end{array}\right.$
+
+$\Omega_{A}$: Unknown anomalous region = [shape optiisation].{alert]. 
+
+- [**Level-set parameterisation**]{.fg style="--col: #e64173"}: 
+  - Introduce an artificial level-set (LS) function $L(x)$.
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+
+- Anomalous: 
+  - $\Omega_{A}=\{x\in \mathbb{R}^{2}\vert \,\,\red{L(x)}>\lambda\}$
+
+ 
+
+$$
+\kappa(x)=\left\{\begin{array}{cc} \red{\kappa_1(x)}&\textrm{if}~\red{L(x)}>\lambda,\\
+\red{\kappa_2(x)}&\textrm{if}~\red{L(x)}\leq \lambda.\end{array}\right.
+$$
+
+$$\big(L, \kappa_1,\kappa_2\big)\mapsto \kappa$$
+$$\mathcal{P}(L,\kappa_1,\kappa_2)=\kappa$$
+:::
+
+::: {.column width="50%"}
+
+- Non-anomalous: 
+  - $D\setminus A_{L}^{\lambda}.$
+
+
+::: {layout-ncol=3}
+
+![LS function ($L(x)$)](Figs/param1.png){height=8cm}
+
+![Truncated LS](Figs/param2.png){height=8cm width=70%}
+
+![Random field $\kappa(x)$](Figs/param3.png){height=8cm}
+
+:::
+
+
+:::
+
+:::
+
+[**Bayesian level-set inversion**]{.fg style="--col: #e64173"} [@Level]:
+
+Instead of inferring $u(x)=\kappa(x)$, infer $u(x)=(L(x), \kappa_{1}(x),\kappa_{2}(x))$, i.e.
+
+- Prior $\mathbb{P}(u)=\mathbb{P}(L)\mathbb{P}(\kappa_{1})\mathbb{P}(\kappa_{2})$
+
+- Compute/approximate posterior: $\mathbb{P}(d^{\eta}\vert u)$
+
+- Push forward posterior $\mathcal{P}_\#\mathbb{P}(d^{\eta}\vert u)$. 
+
+
+
+
+
+
+
+## Gaussian Random Fields (GRFs) {.scrollable}
+
+$L(x)\sim N(m, \mathcal{C})$
+
+<details>
+  <summary> Whittle-Matern GRF (see details). 
+  </summary>
+
+Autocorrelation function:
+$$
+ACF(x) = \sigma^2\frac{1}{2^{\nu-1}\Gamma(\nu)} \norm{\frac{x}{L}}^\nu K_\nu \Big(\norm{\frac{x}{L}}\Big).
+$$
+$\nu$ (smoothness); $L$ (intrinsic length-scale); $\sigma$ (amplitude scale).
+
+</details>
+
+
+::: { layout-ncol=1}
+
+![**(a)** Continuous Matérn random fields.](Figs/matern_random_fields_fft.jpg){width=100%}
+
+![**(b)** Thresholded Matérn random fields.](Figs/matern_thresholded_fft.jpg){width=100%}
+
+:::
+
+
+[**Hierarchical Bayesian level-set inversion**]{.fg style="--col: #e64173"} [@Dunlop]:
+Infer hyperparameters of random fields: 
+
+
+<!--
+\begin{block}{\normalsize Karhunen-Loeve Approach}
+$C(x,x')=ACF(x-x')$, Compute $Cv_{i}=\lambda_{i}v_{i}$ then
+\vskip-10pt
+$$v=m+\sum_{i=1}^{\infty}\sqrt{\lambda_{i}}v_{i}\theta_{i}\sim N(m,C),\qquad \theta_{i}\sim N(0,1)$$
+\end{block}
+\begin{block}{\normalsize SPDE Approach [Roininen, et-al, 2014], [ Lindgren, et-al, 2011] }
+\[
+(\mathbb{I}-L^2\Delta )^{(\nu+d/2)/2}v=A(\sigma,\nu,d)L\, W
+\]
+where $W$ is white noise on $\mathbb{R}^{d}$.
+
+-->
+
+
+## Application Examples  {#apps-hub2}
+
+
+:::{=html}
+
+
+- [[Electrical Resistivity Tomography.]{.button}](index.html#app-ert2)
+
+- Composite Manufacturing [@Deep].
+
+- Built Environment [@IGLESIAS2024114558]
+
+- Medical Imaging [@Iglesias_2022]
+
+- <a href="https://www.youtube.com/watch?v=GFTjFaKwYY4" target="_blank" rel="noopener noreferrer">Full Wave Inversion for Ground Penetraing Radar
+</a>
+
+
+:::
+
+
+<!--
+## Application Examples  {#apps-hub2}
+
+
+:::{=html}
+<div class="app-grid">
+
+<a class="app-card" href="#/app-rtm">
+  <div class="app-title">Composite Manufacturing</div>
+  <div class="app-desc">
+    Resin Transfer Moulding.
+  </div></a>
+<a class="app-card" href="#/app-ert2">
+  <div class="app-title">Geophysics</div>
+  <div class="app-desc">
+    Electrical Resistivity Tomography.
+  </div>
+</a>
+<a class="app-card" href="#/app-walls">
+  <div class="app-title">Built Environment</div>
+  <div class="app-desc">
+    Characterisation of thermal bridges in walls.
+  </div>
+</a>
+<a class="app-card" href="#/app-mre">
+  <div class="app-title">Medical Imaging</div>
+  <div class="app-desc">
+    Magnetic Resonance Elastography.
+  </div>
+</a></div>
+:::
+
+-->
+
+## Future Work and Opportunities for Collaboration
+
+
+- **Surrogate modelling via Deep Learning (Neural Operators):**  
+  build a surrogate $\mathcal{F}_s(u) \approx \mathcal{F}(u)$ to accelerate forward evaluations [@Deep].
+
+  - Composites: active structural control  
+  - Geophysics: early warning systems  
+  - Medical imaging: predictions within clinical time-scales  
+  - Thermal bridges: rapid monitoring of thermal performance
+
+- **Alternative Bayesian approaches** (e.g., MCMC) when a **full posterior characterisation** is required, particularly under **data scarcity**.
+
+- **New or existing applications** where **EKI** could provide efficient parameter estimation and uncertainty quantification.
+  - Geometric constraints
+
+
+## Thank you
+
+### Questions?
+
+Scan for slides
+
+![](inverse-problems-talk-qr.svg){width=35%}
+
+
+[[References]{.button}](index.html#ref)
+
+# Appendix
+
+## Resin Transfer Moulding (RTM)  {#app-rtm}
+### RTM: context
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+Manufacturing composite materials
+
+**Uses of composite materials:** Aerospace, automotive and marine industries. 
+
+**Benefits:** High-performance, lightweight, flexibility to accommodate complex designs
+
+**Manufacturing Involves:**  \textit{Automatic Fibre Placement:} A robotic system lays down fibre tapes into a tool. \textit{Resin Transfer Molding (RTM).} 
+
+
+:::
+
+::: {.column width="50%"}
+
+![](Figs/B787_composite.jpg){width=100%}
+
+
+:::
+
+:::
+
+
+## RTM: Process{.scrollable}
+
+
+![](Figs/RTM1.jpg){width=100%}
+
+
+
+
+## Defects in RTM
+
+::: {layout-ncol=2}
+![](Figs/ICIAM2.jpg)
+
+![](Figs/ICIAM3.jpg)
+:::
+
+## Inverse Problem in RTM
+
+[**Objective:**]{.alert} Infer physical properties of the reinforcement given pressure measurements during resin injection.
+
+
+[**Application:**]{.alert} Active control and Non-destructive Evaluation (NDE)
+
+::: {.columns}
+
+::: {.column width="70%"}
+
+```{=html}
+<div style="
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+">
+  <video id="rtmvid"
+         controls
+         autoplay
+         muted
+         loop
+         playsinline
+         style="
+           max-height:60vh;
+           max-width:100%;
+           border-radius:12px;
+           transform: scaleY(-1);
+         "
+         onloadedmetadata="this.currentTime = 20;">
+    <source src="videos/RTM.mp4" type="video/mp4">
+  </video>
+</div>
+```
+:::
+
+::: {.column width="30%"}
+
+
+
+:::
+
+:::
+
+
+## Resin Injection Model
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: callout-note
+
+## Forward Problem: 
+
+Find $(\blue{p,\Upsilon})$ given  $\red{u}=\red{(K,\phi)}$.
+
+Darcy flow:
+$$
+- \nabla \cdot \Big[ \frac{ \red{K(x)}}{\mu} \nabla \blue{p(x,t)} \Big] = 0,\quad \textrm{in}~ \Omega(t) \nonumber
+$$
+
+Moving front: $x\in \Upsilon(t)$:
+
+$$
+\frac{d \blue{\Upsilon(t)}}{dt}=  -  \frac{\red{K(x)}}{\red{\phi(x)} \mu} \nabla \blue{p(x,t)} \cdot \mathbf{n}(x,t) \nonumber
+$$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](Figures/resin_domain2.png)
+
+
+:::
+
+:::
+
+::: callout-important
+
+## Inverse Problem
+
+Find $\red{(K(x),\phi(x))}$ given measurements of $\blue{p(x_{1}),\dots,p(x_{M})}$.
+
+:::
+
+## Goal 1: Characterisation of material properties (with uncertainty)
+
+![](Figs/Goal1.png)
+
+## Goal 2: Calibrated Model (for active control)
+Needs deep learning surrogate [@Deep]
+
+![](Figures/Experiment4.png)
+
+
+
+
+
+## Nottingham Joint Work: {.scrollable}
+
+### School of Mathematical Sciences (SoMS) & Composites Group (CG) 
+
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note title="👥 Collaborators" style="margin-top: 2rem;"}
+
+- *Michael Causon (SoMS)*
+- *Andreas Endruweit (CG)*
+- *Mikhail Matveev (CG)*
+- *Michael Tretyakov (SoMS)* 
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+
+
+![Advanced Manufacturing](Figs/compo_building.jpg){fig-align="left" style="margin-top:0;margin-bottom:-1em;"}
+
+
+
+
+:::
+
+:::
+[@CAUSON2024108355; @Deep; @MATVEEV2021106323]
+
+::: {layout-ncol=2}
+
+![](Figs/compo.jpg)
+
+![](Figs/MC.jpg)       
+
+![](Figs/paper_compo4.png)       
+
+     
+
+:::
+
+[[Back to Applications menu]{.button}](index.html#apps-hub)
+
+<!--
+## Prior {#app-rtm2 .scrollable}
+
+![](Figures/prior_pairs.png)
+
+## Posterior
+
+
+![](Figures/posterior_pairs.png)
+
+<div class="backhub">
+  ↩ <a href="index.html">Volver al inicio</a>
+</div>
+[[Back to Applications menu]{.button}](#apps-hub)
+
+-->
+
+
+## Electrical Resistivity Tomography (ERT) {#app-ert .scrollable}
+
+### Context and Applications
+
+- **ERT** is a non-invasive geophysical imaging method that reconstructs subsurface electrical resistivity from surface or borehole electrode measurements.
+
+- Resistivity variations reflect **soil moisture, porosity, clay content, fractures, and groundwater flow**.
+
+![](Figs/ert_schematic.png){width=100%}
+
+
+**UK applications:**
+
+- **Landslides:** monitoring slope stability, detecting slip surfaces, and tracking moisture infiltration in vulnerable areas (e.g., railway cuttings, coastal cliffs).
+
+- **Flood defences:** assessing the integrity of embankments and levees, identifying internal erosion, seepage pathways, and zones of weakness.
+
+
+- **Other applications:**
+
+  - Groundwater exploration and contamination mapping  
+  - Infrastructure and foundation assessment  
+  - Archaeology and environmental monitoring  
+  - Carbon storage and geothermal reservoir monitoring
+
+
+### ERT: Forward and Inverse Problem
+
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+
+::: callout-note
+
+## Forward Problem
+  Given $\red{\kappa(x)}$ find $\blue{V(x)}$
+  $$\nabla \cdot \red{\kappa(x)} \color{black}{\nabla}  \blue{V(x)}\color{black}{=}I(x_{s^{+}},x_{s^{-}})$$ 
+  
+- $\red{\kappa(x)}$: electric conductivity
+- $\blue{V(x)}$: electrical potential
+
+:::
+
+
+
+:::
+
+::: {.column width="40%"}
+
+::: callout-important
+
+## Inverse Problem
+
+Find $\red{\kappa(x)}$ given measurements of $\blue{V(x_{r})-V(x_{0})}$.
+
+:::
+
+
+:::
+
+:::
+
+
+## Goals {.scrollable}
+
+### Goal 1: Infer subsurface stratigraphy and lithological under uncertainty
+
+::: {.columns}
+
+::: {.column width="33%"}
+![Chenqui site](img/fields.jpg){width=70% fig-align="center" style="margin-top:0;margin-bottom:-1em;"}
+:::
+
+::: {.column width="33%"}
+![Resistivity map](img/mean.png){width=100% fig-align="center" style="margin-top:0;margin-bottom:-1em;"}
+
+:::
+
+::: {.column width="33%"}
+![Probability of zone 2](img/zone2.png){width=100% fig-align="center" style="margin-top:0;margin-bottom:-1em;"}
+
+:::
+
+:::
+
+### Goal 2: Anomaly Detection/Characterisation
+
+![](Figs/ERT3D.jpg){width=100%}
+
+
+## Joint Work: {.scrollable}
+
+### SoMS (Nottigham), British Geological Survey (BGS), UK Centre for Ecology and Hydrology, Lancaster University
+
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note title="👥 Collaborators" style="margin-top: 2rem;"}
+
+- *Andy Binley (Lancaster University)*
+- *Michael Tso (UK Centre for Ecology and Hydrology)*
+- *Oliver Kuras (British Geological Survey)*
+- *Paul Wilkinson (British Geological Survey)*
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+
+
+![BGS Keyworth](Figs/bgs.jpeg){width=80% fig-align="left" style="margin-top:0;margin-bottom:-1em;"}
+
+
+
+
+:::
+
+:::
+[@Tso1; @Tso2]
+
+::: {layout-ncol=2}
+
+![](Figs/Andy3.jpg)
+
+![](Figs/Andy4.jpg)
+
+:::
+[[Back to Applications menu]{.button}](index.html#apps-hub)
+
+
+## EKI for ERT {#app-ert2 .scrollable}
+### Toy model (Synthetic data)
+
+::: {.columns}
+
+$$
+\kappa(x)=\left\{\begin{array}{cc} \red{\kappa_{1}}&\textrm{if}~L(x)>1,\\
+\red{\kappa_2}&\textrm{if}~L(x)\leq 1.\end{array}\right.
+$$
+
+::: {.column width="50%"}
+
+Prior:
+
+$$\mathbb{P}(\kappa_{1},\kappa_{2},L)=\mathbb{P}(\kappa_{1})\mathbb{P}(\kappa_{2})N(0,L)$$
+
+
+
+
+$$
+\kappa^{(j)}(x)=\left\{\begin{array}{cc} \red{\kappa_{1}}^{(j)}&\textrm{if}~L^{(j)}(x)>1,\\
+\red{\kappa_2}^{(j)}&\textrm{if}~L^{(j)}(x)\leq 1.\end{array}\right.
+$$
+
+Zone 1 prob:
+$$\mathbb{P}(L(x)>1)\approx \frac{1}{J}\sum_{j=1}^{J}\mathbb{I}_{L^{(j)}(x)>1}$$
+
+
+:::
+
+::: {.column width="50%"}
+
+Posterior approx from EKI:
+$$\big\{k_{1}^{(j)},k_{2}^{(j)},L^{(j)}\big\}_{j=1}^{J}\sim \mathbb{P}(d^{\eta}\vert \kappa_{1},\kappa_{2},L)$$
+
+![](Figs/ERT_res1.png)
+
+
+:::
+
+:::
+
+
+## EKI for ERT {.scrollable}
+### Extension to 3 zones with real data
+[@Tso1]
+
+::: {.panel-tabset}
+
+## Chenqui, China:
+
+:::{.columns}
+
+::: {.column width="40%"}
+
+![(a) Standard method. (b) EKI (mean) (c) Probability zone 2](Figs/ERT_res2.jpg){width="100%"}
+
+![zones posterior resistivities](Figs/hist.png){width="100%"}
+
+:::
+
+::: {.column width="60%"}
+
+- Identify hillslope hydrostratigraphy to improve conceptualization of runoff processes in the karst catchment.
+- 2-D ERT profile with 48 electrodes, spaced ~5 m apart; electrode positions surveyed.
+- Dipole–dipole configuration with spacings of 1–3 electrodes, up to 11 levels.
+- Reciprocal measurements collected for error analysis (1569 measurements).
+
+- **EKI resistivity maps** better capture **weathered features and soil infills typical of karst systems**, improving geological interpretation.
+
+- **High-resistivity zone** agrees with a **flat, slightly dipping mudstone layer** reported in geological maps (Cheng et al., 2019).
+
+
+:::
+
+:::
+
+
+
+
+## Eggborough, UK
+
+::: {.columns}
+
+::: {.column width="30%"}
+
+![](Figs/AndyB1.jpg)
+
+:::
+
+::: {.column width="70%"}
+
+![](Figs/SC.jpg){width="50%"}
+![](Figs/Andy2.png)
+:::
+
+:::
+
+:::
+
+[[Back to Applications menu]{.button}](index.html#apps-hub2)
+
+
+## Thermal Characterisation of Buildings' walls {#app-walls .scrollable}
+
+### Aim and Context
+
+
+[**Aim:**]{.fg style="--col: #e64173"} Predict the thermal performance of (existing) buildings' walls in the presence of unknown thermal bridge effects. 
+
+
+Context (United Kingdom)
+
+- UK decarbonisation policy legislates an 80\% reduction of its 1990 greenhouse gas emissions by 2050. 
+
+- 45\% of all carbon emissions can be attributed to buildings.
+
+- 60\% of those emissions are associated space heating in domestic buildings. 
+- 85\% of existing building stock will still be standing by 2050.
+
+- External walls comprise approximately 40\% of heat loss/gain through the building envelope
+
+
+
+## Thermal Bridges {.scrollable}
+
+
+-  3D heat transfer arising from heterogeneities and/or discontinuities in the thermophysical composition of the building fabric (e.g. from material defects/degradation) 
+
+::: {.columns }
+
+
+::: {.column width="60%"}
+
+- Can decrease up to 40\% the thermal efficiency of buildings 
+
+-  Can lead to moisture condensation.
+
+:::
+
+::: {.column width="40%"}
+
+
+![](Figs/seq4.png){width="75%"}
+
+:::
+
+:::
+
+## Wall's thermal characterisation {.scrollable}
+
+### Forward and Inverse Problem
+
+::: {.columns }
+
+
+::: {.column width="70%"}
+
+::: callout-note
+
+## Forward Problem
+Given $\red{u(x)=(c(x),k(x),R_{I},R_{E})}$ find $\blue{T(x, t)}$: 
+$$
+\red{c(x)}\frac{\partial \blue{T(x, t)}}{\partial t} =\nabla \cdot \red{k(x)} \nabla \blue{T(x, t)}
+$$
+Convective BCs on the internal/external surfaces $\mathcal{S}_{\alpha},~(\alpha=I,E)$
+
+$$
+\begin{align*}
+ - \red{k(x)} \nabla T(x, t)\cdot\mathbf{n}(x)=\red{R_{\alpha}^{-1}}[T(x,t)- \green{T_{\alpha}(t)}]
+\end{align*}
+$$
+
+
+
+:::
+
+::: callout-important
+
+## Inverse Problem
+
+Find $\red{u(x)=(c(x),k(x),R_{I},R_{E})}$ given $\blue{T(x,t)\big\vert_{\mathcal{S}_{\alpha}}}$ and  $\blue{Q_{\alpha}(x,t)\equiv -k(x)\nabla T(x,t)\big\vert_{\mathcal{S}_{\alpha}}}$.
+
+:::
+
+:::
+
+
+::: {.column width="30%"}
+
+![](Figs/wall1.png){width="60%"}
+
+![](Figs/wall3.png){width="60%"}
+
+:::
+
+:::
+
+## Nottingham Joint Work: { .scrollable}
+
+### School of Mathematical Sciences (SoMS) & Architecture and built environment (ABE)
+
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note title="👥 Collaborators"}
+
+- *Yupeng Wu (ABE)*
+- *Christopher Wood (ABE)*
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+
+
+![ABE](Figs/abe.png){width="60%" fig-align="left" style="margin-top:0;margin-bottom:-1em;"}
+
+
+
+
+:::
+
+:::
+
+[@IGLESIAS2024114558;@DESIMON2018220;@Iglesias_2018;@IGLESIAS2018417]
+
+
+![](Figs/Paper_Buil.jpeg)
+
+
+     
+
+
+
+[[Back to Applications menu]{.button}](index.html#apps-hub)
+
+
+
+
+## Magnetic Resonance Elastography {#app-mre .scrollable}
+
+
+[**Aim:**]{.fg style="--col: #e64173"} Remote palpation by shear waves, i.e. tomographic quantification of shear modulus of biological tissue.
+
+
+
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+- Induce excitation at a given frequency (e.g. 50Hz).
+
+
+- Measure (complex) displacements $\blue{\bfu(\bfx)}$ via MRI (Motion encoding gradient).
+
+
+
+- Invert displacements to find 
+shear modulus $\red{G(\bfx)}$: viscoelastic properties
+
+:::
+
+::: {.column width="40%"}
+
+
+![](Figs_for_MRE/Set1.png){width=95%}
+
+
+
+
+
+:::
+
+:::
+
+
+
+::: {#fig-mre-workflow}
+![](Figs_for_MRE/Set2.png){width=100%}
+
+A: T1/T2 weighted B: $\vert \bfu(\bfx)\vert$ C: $\vert G(\bfx)\vert\qquad$.^[Images from: Tan CH, Venkatesh SK. *MRE and Other Magnetic Resonance Imaging Techniques in Chronic Liver Disease: Current Status and Future Directions.* Gut and Liver 2016;10:672–686.]
+:::
+
+
+
+
+## Forward/Inverse Problem in MRE {.scrollable}
+
+::: callout-note
+
+## Forward Model
+
+Time-harmonic isotropic linear viscoelastic equations
+$$
+\rho \omega^2 \blue{\bfu} +\nabla \cdot \big[ \red{G} (\nabla \blue{\bfu} +(\nabla \blue{\bfu})^{T})\big]+\nabla (\red{\lambda} \nabla \cdot \blue{\bfu})=\mathbf{0},\qquad \text{in}~ \Omega,
+$$
+:::
+
+- Known quantities:  $\omega$ (frequency) and $\rho\approx 10^{3}\text{kg}/\text{m}^3$.  
+
+- Unknown quantities: BCs, $\red{\lambda(\bfx)}$ and $\red{G(\bfx)}$
+
+- Measured quantities (via MRI):  $\blue{\bfu_{M}\equiv (\bfu(\bfx_{1}),\dots,\bfu(\bfx_{M}))}$
+
+
+
+::: callout-important
+
+## Inverse Problem
+
+Find the shear modulus $\red{G(\bfx)=G_{s}(\bfx)+iG_{l}(\bfx)}$ given measurements of  $\blue{\bfu_{M}\equiv (\bfu(\bfx_{1}),\dots,\bfu(\bfx_{M}))}$.
+
+:::
+
+$\red{G_{s}(\bfx)}$: storage modulus. $\red{G_{l}(\bfx)}$: loss modulus. 
+
+
+## Characterisation of biological tissue {.scrollable} 
+
+
+
+![](Figs_for_MRE/for_talk1.png){width=80% }
+
+
+
+
+::: {.columns}
+
+::: {.column width="33%"}
+
+
+![](Figs/mean3.png){width=70%}
+
+:::
+
+::: {.column width="33%"}
+
+
+![](Figs/varsto.png){width=70%}
+:::
+
+::: {.column width="33%"}
+
+![](Figs/prob1.png){width=75%}
+
+:::
+
+
+
+:::
+
+
+## Nottingham Joint Work: {.scrollable}
+
+### School of Mathematical Sciences (SoMS) & Sir Peter Mansfield Imaging Centre (SPMIC)
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note title="👥 Collaborators"}
+- *Susan Francis (SPMIC)*
+- *Deirdre McGrath (SPMIC)*
+- *Michael Tretyakov (SoMS)* 
+:::
+
+[@Iglesias_2022]
+![](Figs/Paper.jpg){width=100%}
+
+
+:::
+
+::: {.column width="50%"}
+
+
+
+![SIPC](Figs/Sir-Peter-Mansfield-Imaging-Centre-SPMIC466x236.jpg){fig-align="left" style="margin-top:0;margin-bottom:-1em;"}
+
+:::
+
+:::
+
+
+[[Back to Applications menu]{.button}](index.html#apps-hub)
+
+
+
+
+## References {#ref}
+
+::: {#references}
+
+:::
