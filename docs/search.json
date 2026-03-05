@@ -1,0 +1,436 @@
+[
+  {
+    "objectID": "app-walls.html#thermal-characterisation-of-buildings-walls",
+    "href": "app-walls.html#thermal-characterisation-of-buildings-walls",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Thermal Characterisation of Buildings’ walls",
+    "text": "Thermal Characterisation of Buildings’ walls\nAim and Context\nAim: Predict the thermal performance of (existing) buildings’ walls in the presence of unknown thermal bridge effects.\nContext (United Kingdom)\n\nUK decarbonisation policy legislates an 80% reduction of its 1990 greenhouse gas emissions by 2050.\n45% of all carbon emissions can be attributed to buildings.\n60% of those emissions are associated space heating in domestic buildings.\nIt is estimated that up to 85% of existing building stock will still be standing by 2050.\nEffective large-scale retrofitting of the existing housing stock is vitally important to reach those low-carbon targets.\nExternal walls comprise approximately 40% of heat loss/gain through the building envelope"
+  },
+  {
+    "objectID": "app-walls.html#thermal-bridges",
+    "href": "app-walls.html#thermal-bridges",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Thermal Bridges",
+    "text": "Thermal Bridges\n\n3D heat transfer arising from heterogeneities and/or discontinuities in the thermophysical composition of the building fabric (e.g. from material defects/degradation)\nTypically present in the existing housing stock, TBs can decrease up to 40% the thermal efficiency of buildings\nCan lead to moisture condensation which affects indoor air quality, and pose serious health hazards to occupants (e.g. 30-50% increase in respiratory conditions and asthma)."
+  },
+  {
+    "objectID": "app-walls.html#forward-and-inverse-model",
+    "href": "app-walls.html#forward-and-inverse-model",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Forward and Inverse Model",
+    "text": "Forward and Inverse Model\n\\[\n\\style{color:#d1002d}{c(\\mathbf x)}\\frac{\\partial \\style{color:blue}{T(\\mathbf x, t)}}{\\partial t} =\\nabla \\cdot \\style{color:#d1002d}{k(\\mathbf x)} \\nabla \\style{color:blue}{T(\\mathbf x, t)}\n\\] Convective BCs on the internal/external surfaces\n\\(\\mathcal{S}_{\\alpha},~(\\alpha=I,E)\\) \\[\n\\begin{align*}\n- \\style{color:#d1002d}{k(\\mathbf x)} \\nabla T(\\mathbf x, t)\\cdot\\mathbf{n}(\\mathbf x)=\\style{color:#d1002d}{R_{\\alpha}^{-1}}[T(\\mathbf x,t)- \\color{green}{T_{\\alpha}(t)}],\n\\end{align*}\n\\] Adiabatic BCs on \\(\\partial\\Omega_{W}\\setminus \\Big(\\mathcal{S}_{I}\\cup\\mathcal{S}_{E}\\Big)\\) \\[\n\\begin{align*}\n- \\alert{k(\\mathbf x)} \\nabla T(\\mathbf x, t)\\cdot\\mathbf{n}(\\mathbf x)=0\n\\end{align*}\n\\] Forward model \n\\[\\alert{U(\\bm{x})=(c(\\bm{x}),k(\\bm{x}),R_{I},R_{E}).}\\] Forward model : \\ \\[\n\\adv{T(\\mathbf x,t)\\big\\vert_{\\mathcal{S}_{\\alpha}}},\\quad \\text{and} \\quad \\adv{Q_{\\alpha}(\\mathbf x,t)\\equiv -k(\\mathbf x)\\nabla T(\\mathbf x,t)\\big\\vert_{\\mathcal{S}_{\\alpha}}}\n\\]"
+  },
+  {
+    "objectID": "app-walls.html#oi",
+    "href": "app-walls.html#oi",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "oi",
+    "text": "oi\n\n\n\\[\\nabla \\cdot \\color{red}{\\kappa(x)} \\color{black}{\\nabla}  \\color{blue}{V(x)}\\color{black}{=}I(x_{s^{+}},x_{s^{-}})\\] +BCs"
+  },
+  {
+    "objectID": "app-walls.html#goal",
+    "href": "app-walls.html#goal",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Goal",
+    "text": "Goal"
+  },
+  {
+    "objectID": "app-walls.html#defectos",
+    "href": "app-walls.html#defectos",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Defectos",
+    "text": "Defectos"
+  },
+  {
+    "objectID": "app-walls.html#problem-inverso-en-rtm",
+    "href": "app-walls.html#problem-inverso-en-rtm",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Problem Inverso en RTM",
+    "text": "Problem Inverso en RTM\nObjectivo: Inferir propiedades fisicas del material dado datos de presion durante la injeccion de resina  Application: Control activo y evaluacion no destructiva (NDE)"
+  },
+  {
+    "objectID": "app-walls.html#rtm-modelo",
+    "href": "app-walls.html#rtm-modelo",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "RTM – Modelo",
+    "text": "RTM – Modelo\n\n\nDarcy flow: \\[\n- \\nabla \\cdot \\Big[ \\frac{ \\kappa(x)}{\\mu} \\nabla p(x,t) \\Big] = 0,\\quad \\textrm{in}~ D(t) \\nonumber\n\\] + ICs + BCs\\\nMoving front: \\(x\\in \\Upsilon(t)\\):\n\\[ \\frac{d \\color{red}{\\Upsilon(t)}}{dt}=  -  \\frac{\\kappa(x)}{\\varphi(x) \\mu} \\nabla p(x,t) \\cdot \\mathbf{n}(x,t) \\nonumber\n\\]"
+  },
+  {
+    "objectID": "app-walls.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "href": "app-walls.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Goal 1: Characterisation of material properties (with uncertainty)",
+    "text": "Goal 1: Characterisation of material properties (with uncertainty)"
+  },
+  {
+    "objectID": "app-walls.html#goal-2-calibrated-model-ready-for-control",
+    "href": "app-walls.html#goal-2-calibrated-model-ready-for-control",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Goal 2: Calibrated Model (ready for control)",
+    "text": "Goal 2: Calibrated Model (ready for control)\nNeeds deep learning surrogate!\n\n\n↩︎ Volver al inicio"
+  },
+  {
+    "objectID": "app-ert.html#electrical-resistivity-tomography-ert",
+    "href": "app-ert.html#electrical-resistivity-tomography-ert",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Electrical Resistivity Tomography (ERT)",
+    "text": "Electrical Resistivity Tomography (ERT)\n\n\nAim: Estimation of electrical properties of the near-subsurface given surface measurements.\n\n\n\n\n\n\nForward Model\n\n\n\\[\\nabla \\cdot \\style{color:#d1002d}{\\kappa(x)} \\color{black}{\\nabla}  \\color{blue}{V(x)}\\color{black}{=}I(x_{s^{+}},x_{s^{-}})\\]\n\n\\(\\style{color:#d1002d}{\\kappa(x)}\\): electric conductivity\n\\(\\style{color:blue}{V(x)}\\): electrical potential\n\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind \\(\\style{color:#d1002d}{\\kappa(x)}\\) given measurements of \\(\\style{color:blue}{V(x_{r})-V(x_{0})}\\)."
+  },
+  {
+    "objectID": "app-ert.html#anomaly-detectioncharacterisation",
+    "href": "app-ert.html#anomaly-detectioncharacterisation",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Anomaly Detection/Characterisation",
+    "text": "Anomaly Detection/Characterisation\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#nottingham",
+    "href": "index.html#nottingham",
+    "title": "Computational Inverse Problems",
+    "section": "Nottingham",
+    "text": "Nottingham"
+  },
+  {
+    "objectID": "index.html#university-of-nottingham",
+    "href": "index.html#university-of-nottingham",
+    "title": "Computational Inverse Problems",
+    "section": "University of Nottingham",
+    "text": "University of Nottingham\n\n\n\nFive faculties:\n\nArts\nEngineering\nMedicine and Health Sciences\nScience\nSocial Sciences\n\n\n\n\n\n\n~35,000 students in Nottingham, ~5,000 in Malaysia ~8,000 in China\nTop 100 2026 QS World University Rankings\nUniversity Park Campus, one of the UK’s most attractive university campuses."
+  },
+  {
+    "objectID": "index.html#school-of-mathematical-sciences",
+    "href": "index.html#school-of-mathematical-sciences",
+    "title": "Computational Inverse Problems",
+    "section": "School of Mathematical Sciences",
+    "text": "School of Mathematical Sciences\n\n\n~ 80 academic staff.\nAnnual intake of approximately 250-300 Undergraduates\n\nResearch Sections\n\nApplied Mathematics\nPure Mathematics\nStatistics and Probability\nMathematical Physics\nMathematics Education"
+  },
+  {
+    "objectID": "index.html#outline",
+    "href": "index.html#outline",
+    "title": "Computational Inverse Problems",
+    "section": "Outline",
+    "text": "Outline\n\n\n\n\nMotivation for PDE-costrained Inverse Problems\n\n \n\nInverse Problem Framework (Ensemble Kalman Inversion).\n\n \n\nParameterisation for Anomaly Characterisation.\n\n \n\nApplication Examples\n\n \n\nFuture Work and Opportunities for Collaboration"
+  },
+  {
+    "objectID": "index.html#pde-constrained-inverse-problems",
+    "href": "index.html#pde-constrained-inverse-problems",
+    "title": "Computational Inverse Problems",
+    "section": "PDE-constrained Inverse Problems",
+    "text": "PDE-constrained Inverse Problems\nAim: Infer unknown parameters in PDE(s) given measurements of the solution of the PDE(s).\n\n\n\n\n\n\n\n\n\nForward Problem\n\n\nGiven \\(\\style{color:#d1002d}{\\kappa(x)}\\), \\(\\style{color:#d1002d}{f(x) }\\) and \\(\\style{color:#d1002d}{p_0}\\), find \\(\\style{color:blue}{p(x)}\\) such that \\[\n\\begin{aligned}\n- \\nabla \\!\\cdot\\! \\big(\\style{color:#d1002d}{\\kappa(x)}\\color{black}{\\nabla} \\style{color:blue}{p(x)} \\big)&= \\style{color:#d1002d}{f(x) }\n&& x\\in \\Omega, \\\\\n\\style{color:blue}{p(x)} &= \\style{color:#d1002d}{p_0}\n&&x\\in \\partial\\Omega .\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nGiven \\(\\style{color:blue}{p(x)}\\), find \\(\\style{color:#d1002d}{\\kappa(x)}\\), \\(\\style{color:#d1002d}{f(x) }\\) and \\(\\style{color:#d1002d}{p_0}\\) such that \\[\n\\begin{aligned}\n- \\nabla \\!\\cdot\\! \\big(\\style{color:#d1002d}{\\kappa(x)}\\nabla \\style{color:blue}{p(x)} \\big)&= \\style{color:#d1002d}{f(x) }\n&& x\\in \\Omega, \\\\\n\\style{color:blue}{p(x)} &= \\style{color:#d1002d}{p_0}\n&&x\\in \\partial\\Omega .\n\\end{aligned}\n\\]\n\n\n\n\nOverarching Applications of Inverse Problems:\n\nModel calibration e.g. \\(\\style{color:#d1002d}{\\kappa(x)}\\), may be partially known (cannot be measured directly) or subject to uncertainty.\nTomography: inference of physical properties e.g.\\(\\style{color:#d1002d}{\\kappa(x)}\\)"
+  },
+  {
+    "objectID": "index.html#apps-hub",
+    "href": "index.html#apps-hub",
+    "title": "Computational Inverse Problems",
+    "section": "Application Examples",
+    "text": "Application Examples\n\n\n\n\nComposite Manufacturing\n\n\nResin Transfer Moulding.\n\n \n\nGeophysics\n\n\nElectrical Resistivity Tomography.\n\n \n\nBuilt Environment\n\n\nCharacterisation of thermal bridges in walls.\n\n \n\nMedical Imaging\n\n\nMagnetic Resonance Elastography."
+  },
+  {
+    "objectID": "index.html#general-framework",
+    "href": "index.html#general-framework",
+    "title": "Computational Inverse Problems",
+    "section": "General framework",
+    "text": "General framework\nForward Problem (FP):\n\\[\n\\left\\{\n\\begin{aligned}\n\\textit{Model Equations (MEs):} &\\quad \\mathcal{M}(\\style{color:#d1002d}{u},\\style{color:blue}{p}) = 0 \\\\\n\\textit{Prediction of QoI:} &\\quad \\style{color:blue}{d} = \\mathcal{H}(\\style{color:blue}{p})\n\\end{aligned}\n\\right.\n\\] Forward Map: \\(\\style{color:#d1002d}{u}\\xrightarrow{\\;\\;\\mathcal{F}\\;\\;} \\style{color:blue}{d}=\\mathcal{F}(\\style{color:#d1002d}{u})\\)\nInverse Problem (IP):\nFind \\(\\style{color:#d1002d}{u^{\\dagger}}\\) (the truth) given measurements, \\(\\color{#0044cc}{d^{\\eta}}\\) of \\(d^{\\dagger}=\\mathcal{F}(\\style{color:#d1002d}{u^{\\dagger}})\\).\nCommon (modelling) assumption: \\[\n\\begin{align*}\n\\style{color:blue}{d^{\\eta}}&=\\overbrace{\\mathcal{F}(\\style{color:#d1002d}{u^{\\dagger}})}^{d^{\\dagger}}+\\eta,\\qquad \\eta: measurement~noise\n\\end{align*}\n\\]\nClassical approaches\nLeast-squares: \\[\nu^{\\eta}=\\operatorname*{arg\\,min}_{u\\in U}~~\\overbrace{ \\left\\lVert \\style{color:blue}{d^{\\eta}}-\\mathcal{F}(\\style{color:#d1002d}{u})\\right\\rVert^2}^{data~misfit}\n\\]\n\n\nIll-posedness\n\n\n\n\nLack of uniqueness\nLack of stability\n\nsmall \\(\\eta\\Rightarrow u^{\\eta}\\not\\to u^{\\dagger}\\)\n\n\n\n\n\n\n\n\nAddressing stability: Regularisation\n\n\nRegularise then Optimise e.g. Tikhonov\n\n\\[u^{\\eta}=\\operatorname*{arg\\,min}_{u\\in U}~~\\overbrace{ \\left\\lVert \\style{color:blue}{d^{\\eta}}-\\mathcal{F}(\\style{color:#d1002d}{u})\\right\\rVert^2}^{data~misfit}+\\overbrace{\\alpha\\left\\lVert \\style{color:#d1002d}{u}\\right\\rVert_{\\mathcal{R}}^2}^{regularisation}\\]\n\nRegurlise within the optimiser:\n\nIterarively-regularised Gauss-Newton\nLandweber iteration\nregularising Levenberg-Marquardt\n\n\n\nLimitations of Regularisation:\n\nDoes not address uniqueness\nDoes not quantify uncertainty\nRequires derivative \\(D\\mathcal{F}\\) (and its adjoint \\(D\\mathcal{F}^*\\))\nNot straightforward to incorporate discontinuities of \\(\\style{color:#d1002d}{u(x)}\\)\n\nQuantifying Uncertainty: The Bayesian Approach\n\nPut a prior on \\(\\style{color:#d1002d}{u}\\): \\(\\mathbb{P}(\\style{color:#d1002d}{u})\\).\nFind the posterior\n\n\\[\n\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\propto \\overbrace{\\mathbb{P}(\\style{color:#d1002d}{u})}^{prior}\\overbrace{\\mathbb{P}(\\style{color:blue}{d^{\\eta}}\\vert \\style{color:#d1002d}{u})}^{likelihood}\n\\]\nChallenges:\n\nIn general \\(\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\) does not admit closed-form solution\nSampling of \\(\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\) (e.g. via MCMC) is computationally unfeasible.\n\nRecall \\(\\style{color:#d1002d}{u}\\) is a function (i.e. high-dimensional after discretisation).\n\nHow to incorporate discontinuities of \\(\\style{color:#d1002d}{u}\\)."
+  },
+  {
+    "objectID": "index.html#ensemble-kalman-inversion-eki",
+    "href": "index.html#ensemble-kalman-inversion-eki",
+    "title": "Computational Inverse Problems",
+    "section": "Ensemble Kalman Inversion (EKI)",
+    "text": "Ensemble Kalman Inversion (EKI)\nAssumption \\(\\style{color:blue}{d^{\\eta}}=\\mathcal{F}(\\style{color:#d1002d}{u^{\\dagger}})+\\eta,\\qquad \\eta\\sim N(0,\\Gamma)\\)\nHence posterior: \\[\n\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\propto \\mathbb{P}(\\style{color:#d1002d}{u})\\exp\\Big[-\\frac{1}{2}\\left\\lVert\\Gamma^{-1/2}(\\style{color:blue}{d^{\\eta}}-\\mathcal{F}(\\style{color:#d1002d}{u}))\\right\\rVert^2 \\Big]\n\\]\nMain idea: Construct particle/sample approximations of internediate measures\n\\[\\mathbb{P}(\\style{color:#d1002d}{u})=\\mathbb{P}_{0}(\\style{color:#d1002d}{u})\\mapsto \\mathbb{P}_{1}(\\style{color:#d1002d}{u})\\mapsto\\dots \\mathbb{P}_{N}(\\style{color:#d1002d}{u})=\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\]\n\n\n\n\n\n\nEKI Algorithm\n\n\nStart with samples from the prior: \\(\\{u^{(j)}\\}_{j=1}^{J}\\), \\(u^{(j)}\\sim \\mathbb{P}(u)\\)\nFor \\(n=0,\\dots, N\\):\n\nCompute \\(\\mathcal{F}^{(j)}:=\\mathcal{F}(u^{(j)})\\)\nCompute \\[\n\\displaystyle\\mathcal{C}^{\\mathcal{F}\\mathcal{F}} = \\frac{1}{J-1}\\sum_{j=1}^J\\big(\\mathcal{F}^{(j)}- \\bar{\\mathcal{F}}\\big)\\otimes\\big(\\mathcal{F}^{(j)}-\\bar{\\mathcal{F}}\\big)\\qquad\n\\displaystyle\\mathcal{C}^{u\\mathcal{F}} = \\frac{1}{J-1}\\sum_{j=1}^J\\big(u^{(j)} - \\bar{u}\\big)\\otimes\\big(\\mathcal{F}^{(j)}-\\bar{\\mathcal{F}}\\big)\n\\]\nwhere \\(\\displaystyle\\bar{\\mathcal{F}} = \\frac{1}{J}\\sum_{j=1}^J \\mathcal{F}^{(j)}\\) and \\(\\displaystyle \\bar{u} = \\frac{1}{J}\\sum_{j=1}^J u^{(j)}\\);\nUpdate each particles, at eah iteration:\n\n\\[\nu^{(j)}\\leftarrow u^{(j)}+C^{u\\mathcal{F}}(C^{\\mathcal{F}\\mathcal{F}} +\\alpha_{n}\\Gamma  )^{-1}(d^{\\eta}+\\sqrt{\\alpha_n}\\xi-\\mathcal{F}(u^{(j)}))\\] where \\(\\xi\\sim N(0,\\Gamma)\\) and \\(\\alpha_{n}\\) is a regularisation/tempering parameter.\n\n\n\n\nEKI is derivative/Jacobian free.\nEKI is a heuristic approximate method\n\nin general it does not provide samples of the exact posterior."
+  },
+  {
+    "objectID": "index.html#informal-derivation-of-eki",
+    "href": "index.html#informal-derivation-of-eki",
+    "title": "Computational Inverse Problems",
+    "section": "Informal Derivation of EKI",
+    "text": "Informal Derivation of EKI\nSee [Iglesias and Yang, 2021]\n\n\nTempering: Build transitions between prior and posterior\n\\[\\mathbb{P}(\\style{color:#d1002d}{u})=\\mathbb{P}_{0}(\\style{color:#d1002d}{u})\\mapsto \\mathbb{P}_{1}(\\style{color:#d1002d}{u})\\mapsto\\dots \\mathbb{P}_{N}(\\style{color:#d1002d}{u})=\\mathbb{P}(\\style{color:#d1002d}{u}\\vert \\style{color:blue}{d^{\\eta}})\\]\n\nDefine \\[\\mathbb{P}_{n}(\\style{color:#d1002d}{u})\\propto \\mathbb{P}(\\style{color:#d1002d}{u})\\exp\\Big[-\\frac{\\xi_{n}}{2}\\left\\lVert\\Gamma^{-1/2}(\\style{color:blue}{d^{\\eta}}-\\mathcal{F}(\\style{color:#d1002d}{u}))\\right\\rVert^2 \\Big]\\] with \\(0= \\xi_{0}&lt;\\xi_{1}&lt;\\dots&lt;\\xi_{N+1}=1\\). Then write recursively: \\[\\mathbb{P}_{n+1}(\\style{color:#d1002d}{u})\\propto \\mathbb{P}_{n}(\\style{color:#d1002d}{u})\\exp\\Big[-\\frac{1}{2}\\left\\lVert(\\alpha_{n}\\Gamma)^{-1/2}(\\style{color:blue}{d^{\\eta}}-\\mathcal{F}(\\style{color:#d1002d}{u}))\\right\\rVert^2 \\Big]\\] where \\(\\alpha_{n}=(\\xi_{n+1}-\\xi_{n})^{-1}\\)\n\n\n\nLinearise \\(\\mathcal{F}(\\style{color:#d1002d}{u})\\) around the mean of \\(\\mathbb{P}_{n}(\\style{color:#d1002d}{u})\\).\n\n\\[\\mathbb{P}_{n+1}(\\style{color:#d1002d}{u})\\propto \\mathbb{P}_{n}(\\style{color:#d1002d}{u})\\exp\\Big[-\\frac{1}{2}\\left\\lVert(\\alpha_{n}\\Gamma)^{-1/2}(\\style{color:blue}{d^{\\eta}}-\\mathcal{F}(m_{n})-D\\mathcal{F}(m_{n})(\\style{color:#d1002d}{u}-m_n))\\right\\rVert^2 \\Big]\\]\n\n\n\nGaussianise \\(\\mathbb{P}_{n}(\\style{color:#d1002d}{u})\\approx N(m_{n},C_{n})\\) so the linearised problem is solved in closed form for the Gaussian \\(\\mathbb{P}_{n+1}(\\style{color:#d1002d}{u})=N(m_{n+1}, C_{n+1})\\)\n\n\\[\n\\begin{aligned}\nm_{n+1}=&m_{n}+C_{n}D\\mathcal{F}_n^{*}(D\\mathcal{F}_nC_{n}\\,D\\mathcal{F}_n^{*} +\\alpha_{n}\\Gamma   )^{-1}(d^{\\eta}-\\mathcal{F}_n)\\\\\nC_{n+1}=&C_{n}-C_{n}D\\mathcal{F}_n^{*}(D\\mathcal{F}_nC_{n}\\,D\\mathcal{F}_n^{*} +\\alpha_{n}\\Gamma   )^{-1}D\\mathcal{F}_nC_{n}\n\\end{aligned}\n\\] where \\(\\mathcal{F}_{n}=D\\mathcal{F}(m_{n})\\)\n\n\n\nApproximate derivatives with covariances\n\nIf \\(u_{n}\\sim N(m_{n},C_{n})\\), then\n\\[\n\\begin{aligned}\n\\mathbb{E}[\\mathcal{F}(u_{n})] \\simeq &\\mathcal{F}_n \\\\\n\\textrm {Cov}[\\mathcal{F}(u_{n})] \\simeq   &D\\mathcal{F}_nC_{n}D\\mathcal{F}_n^{*},\\\\\n\\textrm {Cov}[u_{n},\\mathcal{F}(u_{n})] \\simeq  & C_{n}D\\mathcal{F}_n^{*}.\n\\end{aligned}\n\\]\nHence \\[\n\\begin{aligned}\nm_{n+1}\\simeq &m_{n}+\\style{color:#d1002d}{\\textrm {Cov}[u_{n},\\mathcal{F}(u_{n})]}(\\style{color:#d1002d}{\\textrm {Cov}[\\mathcal{F}(u_{n})]}+\\alpha_{n}\\Gamma   )^{-1}(d^{\\eta}-\\style{color:#d1002d}{\\mathbb{E}_{n}[\\mathcal{F}(u_{n})]})\\\\\nC_{n+1}\\simeq &C_{n}-\\style{color:#d1002d}{\\textrm {Cov}[u_{n},\\mathcal{F}(u_{n})]}(\\style{color:#d1002d}{\\textrm {Cov}[\\mathcal{F}(u_{n})]}+\\alpha_{n}\\Gamma   )^{-1}\\style{color:#d1002d}{\\textrm {Cov}[\\mathcal{F}(u_{n}),u_{n}]}\n\\end{aligned}\n\\]\n\n\n\nUse sample approximations of expectations/covariances\n\n\\[\\mathbb{P}_{n}(u_n)\\simeq \\mathbb{P}_{n}^{J}(u_n):=\\frac{1}{J}\\sum_{j=1}^{J}\\delta_{u_{n}^{(j)}},\\qquad u_{n}^{(j)}\\sim\\mathbb{P}_{n}(u_n)=N(m_{n},\\mathcal{C}_{n})\\] \\[u_{n+1}^{(j)}=u_{n}^{(j)}+C_{n}^{u\\mathcal{F}}(C_{n}^{\\mathcal{F}\\mathcal{F}} +\\alpha_{n}\\Gamma  )^{-1}(d^{\\eta}+\\sqrt{\\alpha_n}\\xi_{n}^{(j)}-\\mathcal{F}(u_{n}^{(j)}))\\] where \\(\\xi_{n}^{(j)}\\sim N(0,I)\\) and \\(C_{n}^{u\\mathcal{F}}\\) and \\(C_{n}^{\\mathcal{F}\\mathcal{F}}\\) are the sample approximations of \\(\\style{color:#d1002d}{\\textrm {Cov}[u_{n},\\mathcal{F}(u_{n})]}\\) and \\(\\style{color:#d1002d}{\\textrm {Cov}[\\mathcal{F}(u_{n})]}\\), respectively"
+  },
+  {
+    "objectID": "index.html#eki-history",
+    "href": "index.html#eki-history",
+    "title": "Computational Inverse Problems",
+    "section": "EKI history",
+    "text": "EKI history\n\nOceanography and Meteorology:\n\nEnsemble Kalman Filter [Burgers et al., 1998; Evensen, 1994]\n\n(Oil) Reservoir applications: EnKF for parameter estimation. [Gu and Oliver, 2007; Nævdal et al., 2002]\nAdapted EnKF as an iterative solver for PDE-constrained Inverse Problems = EKI [Iglesias et al., 2013]\nEKI as an iterative regulariser: [Iglesias, 2016]\nEKI as Gaussian approximation within a tempering scheme [Iglesias et al., 2018a; Iglesias and Yang, 2021]\nEKI as a system of SDEs [Schillings and Stuart, 2018]\nmean-field perspective of EKI [Calvello et al., 2025]"
+  },
+  {
+    "objectID": "index.html#inferring-discontinuous-properties",
+    "href": "index.html#inferring-discontinuous-properties",
+    "title": "Computational Inverse Problems",
+    "section": "Inferring Discontinuous Properties",
+    "text": "Inferring Discontinuous Properties\n\nRecall Forward Map: \\(\\style{color:#d1002d}{u}\\xrightarrow{\\;\\;\\mathcal{F}\\;\\;} \\style{color:blue}{d}=\\mathcal{F}(\\style{color:#d1002d}{u})\\)\nFor \\(\\style{color:#d1002d}{u}\\) discontinuous (or piecewise-continuous), how to define \\(\\mathbb{P}(\\style{color:#d1002d}{u})\\)?"
+  },
+  {
+    "objectID": "index.html#level-set-random-field-parameterisation",
+    "href": "index.html#level-set-random-field-parameterisation",
+    "title": "Computational Inverse Problems",
+    "section": "Level-set random field parameterisation",
+    "text": "Level-set random field parameterisation\nExample in 2D.\nUnknown physical property \\(\\kappa(x)=\\left\\{\\begin{array}{cc} \\kappa_1(x)&\\textrm{if}~x\\in \\Omega_{A},\\\\\n\\kappa_2(x)&\\textrm{if}~x\\notin \\Omega_{A}.\\end{array}\\right.\\)\n\\(\\Omega_{A}\\): Unknown anomalous region = [shape optiisation].{alert].\n\nLevel-set parameterisation:\n\nIntroduce an artificial level-set (LS) function \\(L(x)\\).\n\n\n\n\n\nAnomalous:\n\n\\(\\Omega_{A}=\\{x\\in \\mathbb{R}^{2}\\vert \\,\\,\\style{color:#d1002d}{L(x)}&gt;\\lambda\\}\\)\n\n\n\\[\n\\kappa(x)=\\left\\{\\begin{array}{cc} \\style{color:#d1002d}{\\kappa_1(x)}&\\textrm{if}~\\style{color:#d1002d}{L(x)}&gt;\\lambda,\\\\\n\\style{color:#d1002d}{\\kappa_2(x)}&\\textrm{if}~\\style{color:#d1002d}{L(x)}\\leq \\lambda.\\end{array}\\right.\n\\]\n\\[\\big(L, \\kappa_1,\\kappa_2\\big)\\mapsto \\kappa\\] \\[\\mathcal{P}(L,\\kappa_1,\\kappa_2)=\\kappa\\]\n\n\nNon-anomalous:\n\n\\(D\\setminus A_{L}^{\\lambda}.\\)\n\n\n\n\n\n\n\n\n\n\n\nLS function (\\(L(x)\\))\n\n\n\n\n\n\n\nTruncated LS\n\n\n\n\n\n\n\nRandom field \\(\\kappa(x)\\)\n\n\n\n\n\n\nBayesian level-set inversion [Iglesias et al., 2016]:\nInstead of inferring \\(u(x)=\\kappa(x)\\), infer \\(u(x)=(L(x), \\kappa_{1}(x),\\kappa_{2}(x))\\), i.e.\n\nPrior \\(\\mathbb{P}(u)=\\mathbb{P}(L)\\mathbb{P}(\\kappa_{1})\\mathbb{P}(\\kappa_{2})\\)\nCompute/approximate posterior: \\(\\mathbb{P}(d^{\\eta}\\vert u)\\)\nPush forward posterior \\(\\mathcal{P}_\\#\\mathbb{P}(d^{\\eta}\\vert u)\\)."
+  },
+  {
+    "objectID": "index.html#gaussian-random-fields-grfs",
+    "href": "index.html#gaussian-random-fields-grfs",
+    "title": "Computational Inverse Problems",
+    "section": "Gaussian Random Fields (GRFs)",
+    "text": "Gaussian Random Fields (GRFs)\n\\(L(x)\\sim N(m, \\mathcal{C})\\)\n\n\nWhittle-Matern GRF (see details).\n\nAutocorrelation function: \\[\nACF(x) = \\sigma^2\\frac{1}{2^{\\nu-1}\\Gamma(\\nu)} \\left\\lVert\\frac{x}{L}\\right\\rVert^\\nu K_\\nu \\Big(\\left\\lVert\\frac{x}{L}\\right\\rVert\\Big).\n\\] \\(\\nu\\) (smoothness); \\(L\\) (intrinsic length-scale); \\(\\sigma\\) (amplitude scale).\n\n\n\n\n\n\n\n\n\n\n(a) Continuous Matérn random fields.\n\n\n\n\n\n\n\n\n\n(b) Thresholded Matérn random fields.\n\n\n\n\n\nHierarchical Bayesian level-set inversion [Dunlop et al., 2017]: Infer hyperparameters of random fields:"
+  },
+  {
+    "objectID": "index.html#apps-hub2",
+    "href": "index.html#apps-hub2",
+    "title": "Computational Inverse Problems",
+    "section": "Application Examples",
+    "text": "Application Examples\n\n\nElectrical Resistivity Tomography.\nComposite Manufacturing [Iglesias et al., 2025].\nBuilt Environment [Iglesias et al., 2024]\nMedical Imaging [Iglesias et al., 2022]\nFull Wave Inversion for Ground Penetraing Radar"
+  },
+  {
+    "objectID": "index.html#future-work-and-opportunities-for-collaboration",
+    "href": "index.html#future-work-and-opportunities-for-collaboration",
+    "title": "Computational Inverse Problems",
+    "section": "Future Work and Opportunities for Collaboration",
+    "text": "Future Work and Opportunities for Collaboration\n\nSurrogate modelling via Deep Learning (Neural Operators):\nbuild a surrogate \\(\\mathcal{F}_s(u) \\approx \\mathcal{F}(u)\\) to accelerate forward evaluations [Iglesias et al., 2025].\n\nComposites: active structural control\n\nGeophysics: early warning systems\n\nMedical imaging: predictions within clinical time-scales\n\nThermal bridges: rapid monitoring of thermal performance\n\nAlternative Bayesian approaches (e.g., MCMC) when a full posterior characterisation is required, particularly under data scarcity.\nNew or existing applications where EKI could provide efficient parameter estimation and uncertainty quantification.\n\nGeometric constraints"
+  },
+  {
+    "objectID": "index.html#thank-you",
+    "href": "index.html#thank-you",
+    "title": "Computational Inverse Problems",
+    "section": "Thank you",
+    "text": "Thank you\nQuestions?\nScan for slides\n\nReferences"
+  },
+  {
+    "objectID": "index.html#app-rtm",
+    "href": "index.html#app-rtm",
+    "title": "Computational Inverse Problems",
+    "section": "Resin Transfer Moulding (RTM)",
+    "text": "Resin Transfer Moulding (RTM)\nRTM: context\n\n\nManufacturing composite materials\nUses of composite materials: Aerospace, automotive and marine industries.\nBenefits: High-performance, lightweight, flexibility to accommodate complex designs\nManufacturing Involves: A robotic system lays down fibre tapes into a tool."
+  },
+  {
+    "objectID": "index.html#rtm-process",
+    "href": "index.html#rtm-process",
+    "title": "Computational Inverse Problems",
+    "section": "RTM: Process",
+    "text": "RTM: Process"
+  },
+  {
+    "objectID": "index.html#defects-in-rtm",
+    "href": "index.html#defects-in-rtm",
+    "title": "Computational Inverse Problems",
+    "section": "Defects in RTM",
+    "text": "Defects in RTM"
+  },
+  {
+    "objectID": "index.html#inverse-problem-in-rtm",
+    "href": "index.html#inverse-problem-in-rtm",
+    "title": "Computational Inverse Problems",
+    "section": "Inverse Problem in RTM",
+    "text": "Inverse Problem in RTM\nObjective: Infer physical properties of the reinforcement given pressure measurements during resin injection.\nApplication: Active control and Non-destructive Evaluation (NDE)"
+  },
+  {
+    "objectID": "index.html#resin-injection-model",
+    "href": "index.html#resin-injection-model",
+    "title": "Computational Inverse Problems",
+    "section": "Resin Injection Model",
+    "text": "Resin Injection Model\n\n\n\n\n\n\n\n\nForward Problem:\n\n\nFind \\((\\style{color:blue}{p,\\Upsilon})\\) given \\(\\style{color:#d1002d}{u}=\\style{color:#d1002d}{(K,\\phi)}\\).\nDarcy flow: \\[\n- \\nabla \\cdot \\Big[ \\frac{ \\style{color:#d1002d}{K(x)}}{\\mu} \\nabla \\style{color:blue}{p(x,t)} \\Big] = 0,\\quad \\textrm{in}~ \\Omega(t) \\nonumber\n\\]\nMoving front: \\(x\\in \\Upsilon(t)\\):\n\\[\n\\frac{d \\style{color:blue}{\\Upsilon(t)}}{dt}=  -  \\frac{\\style{color:#d1002d}{K(x)}}{\\style{color:#d1002d}{\\phi(x)} \\mu} \\nabla \\style{color:blue}{p(x,t)} \\cdot \\mathbf{n}(x,t) \\nonumber\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind \\(\\style{color:#d1002d}{(K(x),\\phi(x))}\\) given measurements of \\(\\style{color:blue}{p(x_{1}),\\dots,p(x_{M})}\\)."
+  },
+  {
+    "objectID": "index.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "href": "index.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "title": "Computational Inverse Problems",
+    "section": "Goal 1: Characterisation of material properties (with uncertainty)",
+    "text": "Goal 1: Characterisation of material properties (with uncertainty)"
+  },
+  {
+    "objectID": "index.html#goal-2-calibrated-model-for-active-control",
+    "href": "index.html#goal-2-calibrated-model-for-active-control",
+    "title": "Computational Inverse Problems",
+    "section": "Goal 2: Calibrated Model (for active control)",
+    "text": "Goal 2: Calibrated Model (for active control)\nNeeds deep learning surrogate [Iglesias et al., 2025]"
+  },
+  {
+    "objectID": "index.html#nottingham-joint-work",
+    "href": "index.html#nottingham-joint-work",
+    "title": "Computational Inverse Problems",
+    "section": "Nottingham Joint Work:",
+    "text": "Nottingham Joint Work:\nSchool of Mathematical Sciences (SoMS) & Composites Group (CG)\n\n\n\n\n\n\n\n\n\n👥 Collaborators\n\n\n\nMichael Causon (SoMS)\nAndreas Endruweit (CG)\nMikhail Matveev (CG)\nMichael Tretyakov (SoMS)\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdvanced Manufacturing\n\n\n\n[Causon et al., 2024; Iglesias et al., 2025; Matveev et al., 2021]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#app-ert",
+    "href": "index.html#app-ert",
+    "title": "Computational Inverse Problems",
+    "section": "Electrical Resistivity Tomography (ERT)",
+    "text": "Electrical Resistivity Tomography (ERT)\nContext and Applications\n\nERT is a non-invasive geophysical imaging method that reconstructs subsurface electrical resistivity from surface or borehole electrode measurements.\nResistivity variations reflect soil moisture, porosity, clay content, fractures, and groundwater flow.\n\n\nUK applications:\n\nLandslides: monitoring slope stability, detecting slip surfaces, and tracking moisture infiltration in vulnerable areas (e.g., railway cuttings, coastal cliffs).\nFlood defences: assessing the integrity of embankments and levees, identifying internal erosion, seepage pathways, and zones of weakness.\nOther applications:\n\nGroundwater exploration and contamination mapping\n\nInfrastructure and foundation assessment\n\nArchaeology and environmental monitoring\n\nCarbon storage and geothermal reservoir monitoring\n\n\nERT: Forward and Inverse Problem\n\n\n\n\n\n\n\n\nForward Problem\n\n\nGiven \\(\\style{color:#d1002d}{\\kappa(x)}\\) find \\(\\style{color:blue}{V(x)}\\) \\[\\nabla \\cdot \\style{color:#d1002d}{\\kappa(x)} \\color{black}{\\nabla}  \\style{color:blue}{V(x)}\\color{black}{=}I(x_{s^{+}},x_{s^{-}})\\]\n\n\\(\\style{color:#d1002d}{\\kappa(x)}\\): electric conductivity\n\\(\\style{color:blue}{V(x)}\\): electrical potential\n\n\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind \\(\\style{color:#d1002d}{\\kappa(x)}\\) given measurements of \\(\\style{color:blue}{V(x_{r})-V(x_{0})}\\)."
+  },
+  {
+    "objectID": "index.html#goals",
+    "href": "index.html#goals",
+    "title": "Computational Inverse Problems",
+    "section": "Goals",
+    "text": "Goals\nGoal 1: Infer subsurface stratigraphy and lithological under uncertainty\n\n\n\n\n\n\n\n\n\nChenqui site\n\n\n\n\n\n\n\n\n\n\nResistivity map\n\n\n\n\n\n\n\n\n\n\nProbability of zone 2\n\n\n\nGoal 2: Anomaly Detection/Characterisation"
+  },
+  {
+    "objectID": "index.html#joint-work",
+    "href": "index.html#joint-work",
+    "title": "Computational Inverse Problems",
+    "section": "Joint Work:",
+    "text": "Joint Work:\nSoMS (Nottigham), British Geological Survey (BGS), UK Centre for Ecology and Hydrology, Lancaster University\n\n\n\n\n\n\n\n\n\n👥 Collaborators\n\n\n\nAndy Binley (Lancaster University)\nMichael Tso (UK Centre for Ecology and Hydrology)\nOliver Kuras (British Geological Survey)\nPaul Wilkinson (British Geological Survey)\n\n\n\n\n\n\n\n\n\n\n\n\n\nBGS Keyworth\n\n\n\n[Tso et al., 2024, 2021]\n\n\n\n\n\n\n\n\n\n\n\n\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#app-ert2",
+    "href": "index.html#app-ert2",
+    "title": "Computational Inverse Problems",
+    "section": "EKI for ERT",
+    "text": "EKI for ERT\nToy model (Synthetic data)\n\n\\[\n\\kappa(x)=\\left\\{\\begin{array}{cc} \\style{color:#d1002d}{\\kappa_{1}}&\\textrm{if}~L(x)&gt;1,\\\\\n\\style{color:#d1002d}{\\kappa_2}&\\textrm{if}~L(x)\\leq 1.\\end{array}\\right.\n\\]\nPrior:\n\\[\\mathbb{P}(\\kappa_{1},\\kappa_{2},L)=\\mathbb{P}(\\kappa_{1})\\mathbb{P}(\\kappa_{2})N(0,L)\\]\n\\[\n\\kappa^{(j)}(x)=\\left\\{\\begin{array}{cc} \\style{color:#d1002d}{\\kappa_{1}}^{(j)}&\\textrm{if}~L^{(j)}(x)&gt;1,\\\\\n\\style{color:#d1002d}{\\kappa_2}^{(j)}&\\textrm{if}~L^{(j)}(x)\\leq 1.\\end{array}\\right.\n\\]\nZone 1 prob: \\[\\mathbb{P}(L(x)&gt;1)\\approx \\frac{1}{J}\\sum_{j=1}^{J}\\mathbb{I}_{L^{(j)}(x)&gt;1}\\]\n\nPosterior approx from EKI: \\[\\big\\{k_{1}^{(j)},k_{2}^{(j)},L^{(j)}\\big\\}_{j=1}^{J}\\sim \\mathbb{P}(d^{\\eta}\\vert \\kappa_{1},\\kappa_{2},L)\\]"
+  },
+  {
+    "objectID": "index.html#eki-for-ert",
+    "href": "index.html#eki-for-ert",
+    "title": "Computational Inverse Problems",
+    "section": "EKI for ERT",
+    "text": "EKI for ERT\nExtension to 3 zones with real data\n[Tso et al., 2021]\n\nChenqui, China:Eggborough, UK\n\n\n\n\n\n\n\n(a) Standard method. (b) EKI (mean) (c) Probability zone 2\n\n\n\n\n\nzones posterior resistivities\n\n\n\n\nIdentify hillslope hydrostratigraphy to improve conceptualization of runoff processes in the karst catchment.\n2-D ERT profile with 48 electrodes, spaced ~5 m apart; electrode positions surveyed.\nDipole–dipole configuration with spacings of 1–3 electrodes, up to 11 levels.\nReciprocal measurements collected for error analysis (1569 measurements).\nEKI resistivity maps better capture weathered features and soil infills typical of karst systems, improving geological interpretation.\nHigh-resistivity zone agrees with a flat, slightly dipping mudstone layer reported in geological maps (Cheng et al., 2019).\n\n\n\n\n\n\n\n\n \n\n\n\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#app-walls",
+    "href": "index.html#app-walls",
+    "title": "Computational Inverse Problems",
+    "section": "Thermal Characterisation of Buildings’ walls",
+    "text": "Thermal Characterisation of Buildings’ walls\nAim and Context\nAim: Predict the thermal performance of (existing) buildings’ walls in the presence of unknown thermal bridge effects.\nContext (United Kingdom)\n\nUK decarbonisation policy legislates an 80% reduction of its 1990 greenhouse gas emissions by 2050.\n45% of all carbon emissions can be attributed to buildings.\n60% of those emissions are associated space heating in domestic buildings.\n85% of existing building stock will still be standing by 2050.\nExternal walls comprise approximately 40% of heat loss/gain through the building envelope"
+  },
+  {
+    "objectID": "index.html#thermal-bridges",
+    "href": "index.html#thermal-bridges",
+    "title": "Computational Inverse Problems",
+    "section": "Thermal Bridges",
+    "text": "Thermal Bridges\n\n3D heat transfer arising from heterogeneities and/or discontinuities in the thermophysical composition of the building fabric (e.g. from material defects/degradation)\n\n\n\n\nCan decrease up to 40% the thermal efficiency of buildings\nCan lead to moisture condensation."
+  },
+  {
+    "objectID": "index.html#walls-thermal-characterisation",
+    "href": "index.html#walls-thermal-characterisation",
+    "title": "Computational Inverse Problems",
+    "section": "Wall’s thermal characterisation",
+    "text": "Wall’s thermal characterisation\nForward and Inverse Problem\n\n\n\n\n\n\n\n\nForward Problem\n\n\nGiven \\(\\style{color:#d1002d}{u(x)=(c(x),k(x),R_{I},R_{E})}\\) find \\(\\style{color:blue}{T(x, t)}\\): \\[\n\\style{color:#d1002d}{c(x)}\\frac{\\partial \\style{color:blue}{T(x, t)}}{\\partial t} =\\nabla \\cdot \\style{color:#d1002d}{k(x)} \\nabla \\style{color:blue}{T(x, t)}\n\\] Convective BCs on the internal/external surfaces \\(\\mathcal{S}_{\\alpha},~(\\alpha=I,E)\\)\n\\[\n\\begin{align*}\n- \\style{color:#d1002d}{k(x)} \\nabla T(x, t)\\cdot\\mathbf{n}(x)=\\style{color:#d1002d}{R_{\\alpha}^{-1}}[T(x,t)- \\color{green}{T_{\\alpha}(t)}]\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind \\(\\style{color:#d1002d}{u(x)=(c(x),k(x),R_{I},R_{E})}\\) given \\(\\style{color:blue}{T(x,t)\\big\\vert_{\\mathcal{S}_{\\alpha}}}\\) and \\(\\style{color:blue}{Q_{\\alpha}(x,t)\\equiv -k(x)\\nabla T(x,t)\\big\\vert_{\\mathcal{S}_{\\alpha}}}\\)."
+  },
+  {
+    "objectID": "index.html#nottingham-joint-work-1",
+    "href": "index.html#nottingham-joint-work-1",
+    "title": "Computational Inverse Problems",
+    "section": "Nottingham Joint Work:",
+    "text": "Nottingham Joint Work:\nSchool of Mathematical Sciences (SoMS) & Architecture and built environment (ABE)\n\n\n\n\n\n\n\n\n\n👥 Collaborators\n\n\n\nYupeng Wu (ABE)\nChristopher Wood (ABE)\n\n\n\n\n\n\n\n\n\n\n\n\n\nABE\n\n\n\n[De Simon et al., 2018; Iglesias et al., 2024, 2018b, 2018c]\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#app-mre",
+    "href": "index.html#app-mre",
+    "title": "Computational Inverse Problems",
+    "section": "Magnetic Resonance Elastography",
+    "text": "Magnetic Resonance Elastography\nAim: Remote palpation by shear waves, i.e. tomographic quantification of shear modulus of biological tissue.\n\n\n\nInduce excitation at a given frequency (e.g. 50Hz).\nMeasure (complex) displacements \\(\\style{color:blue}{\\mathbf u(\\mathbf x)}\\) via MRI (Motion encoding gradient).\nInvert displacements to find shear modulus \\(\\style{color:#d1002d}{G(\\mathbf x)}\\): viscoelastic properties\n\n\n\n\n\n\n\n\n\n\nFigure 1: A: T1/T2 weighted B: \\(\\vert \\mathbf u(\\mathbf x)\\vert\\) C: \\(\\vert G(\\mathbf x)\\vert\\qquad\\).1\n\n\n\nImages from: Tan CH, Venkatesh SK. MRE and Other Magnetic Resonance Imaging Techniques in Chronic Liver Disease: Current Status and Future Directions. Gut and Liver 2016;10:672–686."
+  },
+  {
+    "objectID": "index.html#forwardinverse-problem-in-mre",
+    "href": "index.html#forwardinverse-problem-in-mre",
+    "title": "Computational Inverse Problems",
+    "section": "Forward/Inverse Problem in MRE",
+    "text": "Forward/Inverse Problem in MRE\n\n\n\n\n\n\nForward Model\n\n\nTime-harmonic isotropic linear viscoelastic equations \\[\n\\rho \\omega^2 \\style{color:blue}{\\mathbf u} +\\nabla \\cdot \\big[ \\style{color:#d1002d}{G} (\\nabla \\style{color:blue}{\\mathbf u} +(\\nabla \\style{color:blue}{\\mathbf u})^{T})\\big]+\\nabla (\\style{color:#d1002d}{\\lambda} \\nabla \\cdot \\style{color:blue}{\\mathbf u})=\\mathbf{0},\\qquad \\text{in}~ \\Omega,\n\\]\n\n\n\n\nKnown quantities: \\(\\omega\\) (frequency) and \\(\\rho\\approx 10^{3}\\text{kg}/\\text{m}^3\\).\nUnknown quantities: BCs, \\(\\style{color:#d1002d}{\\lambda(\\mathbf x)}\\) and \\(\\style{color:#d1002d}{G(\\mathbf x)}\\)\nMeasured quantities (via MRI): \\(\\style{color:blue}{\\mathbf u_{M}\\equiv (\\mathbf u(\\mathbf x_{1}),\\dots,\\mathbf u(\\mathbf x_{M}))}\\)\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind the shear modulus \\(\\style{color:#d1002d}{G(\\mathbf x)=G_{s}(\\mathbf x)+iG_{l}(\\mathbf x)}\\) given measurements of \\(\\style{color:blue}{\\mathbf u_{M}\\equiv (\\mathbf u(\\mathbf x_{1}),\\dots,\\mathbf u(\\mathbf x_{M}))}\\).\n\n\n\n\\(\\style{color:#d1002d}{G_{s}(\\mathbf x)}\\): storage modulus. \\(\\style{color:#d1002d}{G_{l}(\\mathbf x)}\\): loss modulus."
+  },
+  {
+    "objectID": "index.html#characterisation-of-biological-tissue",
+    "href": "index.html#characterisation-of-biological-tissue",
+    "title": "Computational Inverse Problems",
+    "section": "Characterisation of biological tissue",
+    "text": "Characterisation of biological tissue"
+  },
+  {
+    "objectID": "index.html#nottingham-joint-work-2",
+    "href": "index.html#nottingham-joint-work-2",
+    "title": "Computational Inverse Problems",
+    "section": "Nottingham Joint Work:",
+    "text": "Nottingham Joint Work:\nSchool of Mathematical Sciences (SoMS) & Sir Peter Mansfield Imaging Centre (SPMIC)\n\n\n\n\n\n\n\n\n\n👥 Collaborators\n\n\n\nSusan Francis (SPMIC)\nDeirdre McGrath (SPMIC)\nMichael Tretyakov (SoMS)\n\n\n\n\n\n[Iglesias et al., 2022] \n\n\n\n\n\n\n\n\nSIPC\n\n\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "index.html#ref",
+    "href": "index.html#ref",
+    "title": "Computational Inverse Problems",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\n\n\n\nBurgers, G., Leeuwen, P.J. van, Evensen, G., 1998. Analysis scheme in the ensemble kalman filter. Monthly Weather Review 126, 1719–1724. https://doi.org/10.1175/1520-0493(1998)126&lt;1719:ASITEK&gt;2.0.CO;2\n\n\nCalvello, E., Reich, S., Stuart, A.M., 2025. Ensemble kalman methods: A mean-field perspective. Acta Numerica 34, 123–291. https://doi.org/10.1017/S0962492924000060\n\n\nCauson, M.E., Iglesias, M.A., Matveev, M.Y., Endruweit, A., Tretyakov, M.V., 2024. Real-time Bayesian inversion in resin transfer moulding using neural surrogates. Composites Part A: Applied Science and Manufacturing 185, 108355. https://doi.org/https://doi.org/10.1016/j.compositesa.2024.108355\n\n\nDe Simon, L., Iglesias, M., Jones, B., Wood, C., 2018. Quantifying uncertainty in thermophysical properties of walls by means of bayesian inversion. Energy and Buildings 177, 220–245. https://doi.org/https://doi.org/10.1016/j.enbuild.2018.06.045\n\n\nDunlop, M.M., Iglesias, M.A., Stuart, A.M., 2017. Hierarchical bayesian level set inversion. Statistics and Computing 27, 1555–1584. https://doi.org/10.1007/s11222-016-9704-8\n\n\nEvensen, G., 1994. Sequential data assimilation with a nonlinear quasi-geostrophic model using monte carlo methods to forecast error statistics. Journal of Geophysical Research: Oceans 99, 10143–10162. https://doi.org/https://doi.org/10.1029/94JC00572\n\n\nGu, Y., Oliver, D.S., 2007. An iterative ensemble kalman filter for multiphase fluid flow data assimilation. SPE Journal 12, 438–446. https://doi.org/10.2118/108438-PA\n\n\nIglesias, M.A., 2016. A regularizing iterative ensemble Kalman method for PDE-constrained inverse problems. Inverse Problems 32, 025002.\n\n\nIglesias, M.A., Causon, Michael.E., Matveev, M.Y., Endruweit, A., V. Tretyakov, M., 2025. DeepONet-accelerated Bayesian inversion for moving boundary problems.\n\n\nIglesias, M.A., Law, K.J.H., Stuart, A.M., 2013. Ensemble kalman methods for inverse problems. Inverse Problems 29, 045001. https://doi.org/10.1088/0266-5611/29/4/045001\n\n\nIglesias, M.A., Lu, Y., Stuart, A., 2016. A Bayesian level set method for geometric inverse problems. Interfaces Free Boundries 18, 181–217.\n\n\nIglesias, M., Li, X., Sovetova, M., Wu, Y., 2024. Bayesian inversion for in-situ thermal characterisation of walls in the presence of thermal anomalies. Energy and Buildings 319, 114558. https://doi.org/https://doi.org/10.1016/j.enbuild.2024.114558\n\n\nIglesias, M., McGrath, D.M., Tretyakov, M.V., Francis, S.T., 2022. Ensemble kalman inversion for magnetic resonance elastography. Physics in Medicine & Biology 67, 235003. https://doi.org/10.1088/1361-6560/ac9fa1\n\n\nIglesias, M., Park, M., Tretyakov, M.V., 2018a. Bayesian inversion in resin transfer molding. Inverse Problems 34, 105002. https://doi.org/10.1088/1361-6420/aad1cc\n\n\nIglesias, M., Sawlan, Z., Scavino, M., Tempone, R., Wood, C., 2018b. Ensemble-marginalized kalman filter for linear time-dependent PDEs with noisy boundary conditions: Application to heat transfer in building walls. Inverse Problems 34, 075008. https://doi.org/10.1088/1361-6420/aac224\n\n\nIglesias, M., Sawlan, Z., Scavino, M., Tempone, R., Wood, C., 2018c. Bayesian inferences of the thermal properties of a wall using temperature and heat flux measurements. International Journal of Heat and Mass Transfer 116, 417–431. https://doi.org/https://doi.org/10.1016/j.ijheatmasstransfer.2017.09.022\n\n\nIglesias, M., Yang, Y., 2021. Adaptive regularisation for ensemble kalman inversion. Inverse Problems 37, 025008. https://doi.org/10.1088/1361-6420/abd29b\n\n\nMatveev, M.Y., Endruweit, A., Long, A.C., Iglesias, M.A., Tretyakov, M.V., 2021. Bayesian inversion algorithm for estimating local variations in permeability and porosity of reinforcements using experimental data. Composites Part A: Applied Science and Manufacturing 143, 106323. https://doi.org/https://doi.org/10.1016/j.compositesa.2021.106323\n\n\nNævdal, G., Mannseth, T., Vefring, E.H., 2002. Near-well reservoir monitoring through ensemble kalman filter, SPE improved oil recovery conference. https://doi.org/10.2118/75235-MS\n\n\nSchillings, C., Stuart, A.M., 2018. Convergence analysis of ensemble kalman inversion: The linear, noisy case. Applicable Analysis 97, 107–123. https://doi.org/10.1080/00036811.2017.1386784\n\n\nTso, C.-H.M., Iglesias, M., Binley, A., 2024. Ensemble kalman inversion of induced polarization data. Geophysical Journal International 236, 1877–1900. https://doi.org/10.1093/gji/ggae012\n\n\nTso, C.-H.M., Iglesias, M., Wilkinson, P., Kuras, O., Chambers, J., Binley, A., 2021. Efficient multiscale imaging of subsurface resistivity with uncertainty quantification using ensemble kalman inversion. Geophysical Journal International 225, 887–905. https://doi.org/10.1093/gji/ggab013"
+  },
+  {
+    "objectID": "app-mre.html#magnetic-resonance-elastography",
+    "href": "app-mre.html#magnetic-resonance-elastography",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Magnetic Resonance Elastography",
+    "text": "Magnetic Resonance Elastography\nAim: Remote palpation by shear waves, i.e. tomographic quantification of shear modulus of biological tissue.\n\n\n\nInduce excitation at a given frequency (e.g. 50Hz).\nMeasure (complex) displacements \\(\\style{color:blue}{\\mathbf u(\\mathbf x)}\\) via MRI (Motion encoding gradient).\nInvert displacements to find shear modulus \\(\\style{color:#d1002d}{G(\\mathbf x)}\\): viscoelastic properties\n\n\n\n\nA: T1/T2 weighted} B: \\(\\vert \\mathbf u(\\mathbf x)\\vert\\) C: \\(\\vert G(\\mathbf x)\\vert\\qquad\\).\n\nImages From: Tan CH, Venkatesh SK. MRE and Other Magnetic Resonance Imaging Techniques in Chronic Liver Disease: Current Status and Future Directions. Gut and Liver 2016;10:672-686"
+  },
+  {
+    "objectID": "app-mre.html#forwardinverse-problem-in-mre",
+    "href": "app-mre.html#forwardinverse-problem-in-mre",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Forward/Inverse Problem in MRE",
+    "text": "Forward/Inverse Problem in MRE\n\n\n\n\n\n\nForward Model\n\n\nTime-harmonic isotropic linear viscoelastic equations \\[\n\\rho \\omega^2 \\style{color:blue}{\\mathbf u} +\\nabla \\cdot \\big[ \\style{color:#d1002d}{G} (\\nabla \\style{color:blue}{\\mathbf u} +(\\nabla \\style{color:blue}{\\mathbf u})^{T})\\big]+\\nabla (\\style{color:#d1002d}{\\lambda} \\nabla \\cdot \\style{color:blue}{\\mathbf u})=\\mathbf{0},\\qquad \\text{in}~ \\Omega,\n\\]\n\n\n\n\nKnown quantities: \\(\\omega\\) (frequency) and \\(\\rho\\approx 10^{3}\\text{kg}/\\text{m}^3\\). \\\nUnknown quantities: BCs, \\(\\lambda(\\mathbf x)\\) and \\(G(\\mathbf x)\\)\nMeasured quantities (via MRI): \\(\\mathbf u_{M}\\equiv (\\mathbf u(\\mathbf x_{1}),\\dots,\\mathbf u(\\mathbf x_{M}))\\)\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind the shear modulus \\(G(\\mathbf x)=G_{s}(\\mathbf x)+iG_{l}(\\mathbf x),\\) given measurements of \\(\\mathbf u_{M}\\equiv (\\mathbf u(\\mathbf x_{1}),\\dots,\\mathbf u(\\mathbf x_{M}))\\).\n\n\n\n\\(\\style{color:#d1002d}{G_{s}(\\mathbf x)}\\): storage modulus. \\(\\style{color:#d1002d}{G_{l}(\\mathbf x)}\\): loss modulus."
+  },
+  {
+    "objectID": "app-mre.html#characterisation",
+    "href": "app-mre.html#characterisation",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Characterisation:",
+    "text": "Characterisation:\n\n\n↩︎ Volver al inicio"
+  },
+  {
+    "objectID": "app-rtm.html#resin-transfer-moulding-rtm",
+    "href": "app-rtm.html#resin-transfer-moulding-rtm",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Resin Transfer Moulding (RTM)",
+    "text": "Resin Transfer Moulding (RTM)\nRTM: context\n\n\nManufacturing composite materials\nUses of composite materials: Aerospace, automotive and marine industries.\nBenefits: High-performance, lightweight, flexibility to accommodate complex designs\nManufacturing Involves: A robotic system lays down fibre tapes into a tool."
+  },
+  {
+    "objectID": "app-rtm.html#rtm-process",
+    "href": "app-rtm.html#rtm-process",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "RTM: Process",
+    "text": "RTM: Process"
+  },
+  {
+    "objectID": "app-rtm.html#defects-in-rtm",
+    "href": "app-rtm.html#defects-in-rtm",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Defects in RTM",
+    "text": "Defects in RTM"
+  },
+  {
+    "objectID": "app-rtm.html#inverse-problem-in-rtm",
+    "href": "app-rtm.html#inverse-problem-in-rtm",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Inverse Problem in RTM",
+    "text": "Inverse Problem in RTM\nObjective: Infer physical properties of the reinforcement given pressure measurements during resin injection.\nApplication: Active control and Non-destructive Evaluation (NDE)"
+  },
+  {
+    "objectID": "app-rtm.html#resin-injection-model",
+    "href": "app-rtm.html#resin-injection-model",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Resin Injection Model",
+    "text": "Resin Injection Model\n\n\n\n\n\n\n\n\nForward Problem:\n\n\nFind \\((\\style{color:blue}{p,\\Upsilon})\\) given \\(\\style{color:#d1002d}{u}=\\style{color:#d1002d}{(\\kappa,\\phi)}\\).\nDarcy flow: \\[\n- \\nabla \\cdot \\Big[ \\frac{ \\style{color:#d1002d}{\\kappa(x)}}{\\mu} \\nabla \\style{color:blue}{p(x,t)} \\Big] = 0,\\quad \\textrm{in}~ \\Omega(t) \\nonumber\n\\] Moving front: \\(x\\in \\Upsilon(t)\\): \\[ \\frac{d \\style{color:blue}{\\Upsilon(t)}}{dt}=  -  \\frac{\\style{color:#d1002d}{\\kappa(x)}}{\\style{color:#d1002d}{\\phi(x)} \\mu} \\nabla \\style{color:blue}{p(x,t)} \\cdot \\mathbf{n}(x,t) \\nonumber\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nInverse Problem\n\n\nFind \\(\\style{color:#d1002d}{(\\kappa(x),\\phi(x))}\\) given measurements of \\(\\style{color:blue}{p(x_{1}),\\dots,p(x_{M})}\\)."
+  },
+  {
+    "objectID": "app-rtm.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "href": "app-rtm.html#goal-1-characterisation-of-material-properties-with-uncertainty",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Goal 1: Characterisation of material properties (with uncertainty)",
+    "text": "Goal 1: Characterisation of material properties (with uncertainty)"
+  },
+  {
+    "objectID": "app-rtm.html#goal-2-calibrated-model-for-active-control",
+    "href": "app-rtm.html#goal-2-calibrated-model-for-active-control",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Goal 2: Calibrated Model (for active control)",
+    "text": "Goal 2: Calibrated Model (for active control)\nNeeds deep learning surrogate!\n\nBack to Applications menu"
+  },
+  {
+    "objectID": "app-rtm.html#prior",
+    "href": "app-rtm.html#prior",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Prior",
+    "text": "Prior"
+  },
+  {
+    "objectID": "app-rtm.html#posterior",
+    "href": "app-rtm.html#posterior",
+    "title": "Seminario: Problemas Inversos Computacionales",
+    "section": "Posterior",
+    "text": "Posterior\n\n\n↩︎ Volver al inicio\n\nBack to Applications menu"
+  }
+]

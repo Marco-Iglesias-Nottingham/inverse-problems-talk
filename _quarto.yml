@@ -1,6 +1,7 @@
 project:
   title: "Seminario: Problemas Inversos Computacionales"
   type: website
+  output-dir: docs
 #  videos/
 #    rtm_simulation.mp4
   # output-dir: docs
