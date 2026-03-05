@@ -660,11 +660,11 @@ Ill-posedness
 Addressing stability: Regularisation
 </summary>
 <ul>
-<li>Regularise then Optimise e.g.&nbsp;Tikhonov</li>
+<li>Regularise then Optimise e.g.&nbsp;Tikhonov regularisation <span class="citation" data-cites="engl1996regularization">[<a href="#/ref" role="doc-biblioref" onclick="">Engl et al., 1996</a>]</span></li>
 </ul>
 <p><span class="math display">\[u^{\eta}=\operatorname*{arg\,min}_{u\in U}~~\overbrace{ \left\lVert \style{color:blue}{d^{\eta}}-\mathcal{F}(\style{color:#d1002d}{u})\right\rVert^2}^{data~misfit}+\overbrace{\alpha\left\lVert \style{color:#d1002d}{u}\right\rVert_{\mathcal{R}}^2}^{regularisation}\]</span></p>
 <ul>
-<li><p>Regurlise within the optimiser:</p>
+<li><p>Regularise within the optimiser <span class="citation" data-cites="kaltenbacher2008iterative">[<a href="#/ref" role="doc-biblioref" onclick="">Kaltenbacher et al., 2008</a>]</span>:</p>
 <ul>
 <li>Iterarively-regularised Gauss-Newton</li>
 <li>Landweber iteration</li>
@@ -679,10 +679,10 @@ Addressing stability: Regularisation
 <li><p>Requires derivative <span class="math inline">\(D\mathcal{F}\)</span> (and its adjoint <span class="math inline">\(D\mathcal{F}^*\)</span>)</p></li>
 <li><p>Not straightforward to incorporate discontinuities of <span class="math inline">\(\style{color:#d1002d}{u(x)}\)</span></p></li>
 </ul>
-<p><span class="alert"><strong>Quantifying Uncertainty</strong>:</span> The Bayesian Approach</p>
+<p><span class="alert"><strong>Quantifying Uncertainty</strong>:</span> The Bayesian Approach <span class="citation" data-cites="stuart2010inverse">[<a href="#/ref" role="doc-biblioref" onclick="">Stuart, 2010</a>]</span></p>
 <ul>
 <li><p>Put a prior on <span class="math inline">\(\style{color:#d1002d}{u}\)</span>: <span class="math inline">\(\mathbb{P}(\style{color:#d1002d}{u})\)</span>.</p></li>
-<li><p>Find the posterior</p></li>
+<li><p>Find the posterior: <span class="math inline">\(\mathbb{P}(\style{color:#d1002d}{u}\vert \style{color:blue}{d^{\eta}})\)</span> (Bayes’ rule):</p></li>
 </ul>
 <p><span class="math display">\[
 \mathbb{P}(\style{color:#d1002d}{u}\vert \style{color:blue}{d^{\eta}})\propto \overbrace{\mathbb{P}(\style{color:#d1002d}{u})}^{prior}\overbrace{\mathbb{P}(\style{color:blue}{d^{\eta}}\vert \style{color:#d1002d}{u})}^{likelihood}
@@ -829,7 +829,7 @@ Use sample approximations of expectations/covariances
 <h3 id="example-in-2d.">Example in 2D.</h3>
 <p>Unknown physical property <span class="math inline">\(\kappa(x)=\left\{\begin{array}{cc} \kappa_1(x)&amp;\textrm{if}~x\in \Omega_{A},\\
 \kappa_2(x)&amp;\textrm{if}~x\notin \Omega_{A}.\end{array}\right.\)</span></p>
-<p><span class="math inline">\(\Omega_{A}\)</span>: Unknown anomalous region = [shape optiisation].{alert].</p>
+<p><span class="math inline">\(\Omega_{A}\)</span>: Unknown anomalous region = [shape optiisation].{alert}.</p>
 <ul>
 <li><span class="fg" style="--col: #e64173"><strong>Level-set parameterisation</strong></span>:
 <ul>
@@ -1674,6 +1674,9 @@ De Simon, L., Iglesias, M., Jones, B., Wood, C., 2018. Quantifying uncertainty i
 <div id="ref-Dunlop" class="csl-entry" role="listitem">
 Dunlop, M.M., Iglesias, M.A., Stuart, A.M., 2017. Hierarchical bayesian level set inversion. Statistics and Computing 27, 1555–1584. <a href="https://doi.org/10.1007/s11222-016-9704-8">https://doi.org/10.1007/s11222-016-9704-8</a>
 </div>
+<div id="ref-engl1996regularization" class="csl-entry" role="listitem">
+Engl, H.W., Hanke, M., Neubauer, A., 1996. Regularization of inverse problems, Mathematics and its applications. Springer Netherlands.
+</div>
 <div id="ref-Evensen" class="csl-entry" role="listitem">
 Evensen, G., 1994. Sequential data assimilation with a nonlinear quasi-geostrophic model using monte carlo methods to forecast error statistics. Journal of Geophysical Research: Oceans 99, 10143–10162. https://doi.org/<a href="https://doi.org/10.1029/94JC00572">https://doi.org/10.1029/94JC00572</a>
 </div>
@@ -1710,6 +1713,9 @@ Iglesias, M., Sawlan, Z., Scavino, M., Tempone, R., Wood, C., 2018c. Bayesian in
 <div id="ref-Iglesias_2021" class="csl-entry" role="listitem">
 Iglesias, M., Yang, Y., 2021. Adaptive regularisation for ensemble kalman inversion. Inverse Problems 37, 025008. <a href="https://doi.org/10.1088/1361-6420/abd29b">https://doi.org/10.1088/1361-6420/abd29b</a>
 </div>
+<div id="ref-kaltenbacher2008iterative" class="csl-entry" role="listitem">
+Kaltenbacher, B., Neubauer, A., Scherzer, O., 2008. Iterative regularization methods for nonlinear ill-posed problems, Radon series on computational and applied mathematics. Walter de Gruyter.
+</div>
 <div id="ref-MATVEEV2021106323" class="csl-entry" role="listitem">
 Matveev, M.Y., Endruweit, A., Long, A.C., Iglesias, M.A., Tretyakov, M.V., 2021. Bayesian inversion algorithm for estimating local variations in permeability and porosity of reinforcements using experimental data. Composites Part A: Applied Science and Manufacturing 143, 106323. https://doi.org/<a href="https://doi.org/10.1016/j.compositesa.2021.106323">https://doi.org/10.1016/j.compositesa.2021.106323</a>
 </div>
@@ -1718,6 +1724,9 @@ Nævdal, G., Mannseth, T., Vefring, E.H., 2002. Near-well reservoir monitoring t
 </div>
 <div id="ref-Schillings02012018" class="csl-entry" role="listitem">
 Schillings, C., Stuart, A.M., 2018. Convergence analysis of ensemble kalman inversion: The linear, noisy case. Applicable Analysis 97, 107–123. <a href="https://doi.org/10.1080/00036811.2017.1386784">https://doi.org/10.1080/00036811.2017.1386784</a>
+</div>
+<div id="ref-stuart2010inverse" class="csl-entry" role="listitem">
+Stuart, A.M., 2010. Inverse problems: A bayesian perspective. Acta Numerica 19, 451–559.
 </div>
 <div id="ref-Tso2" class="csl-entry" role="listitem">
 Tso, C.-H.M., Iglesias, M., Binley, A., 2024. Ensemble kalman inversion of induced polarization data. Geophysical Journal International 236, 1877–1900. <a href="https://doi.org/10.1093/gji/ggae012">https://doi.org/10.1093/gji/ggae012</a>
@@ -2127,7 +2136,7 @@ Tso, C.-H.M., Iglesias, M., Wilkinson, P., Kuras, O., Chambers, J., Binley, A., 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
