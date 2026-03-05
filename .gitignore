@@ -1,7 +1,6 @@
 # Quarto output
 _site/
 
-
 # Quarto cache
 .quarto/
 
@@ -14,4 +13,7 @@ _site/
 # OS
 .DS_Store
 
-/.quarto/
+# Hide Quarto source files
+*.qmd
+_quarto.yml
+references.bib
