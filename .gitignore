@@ -1,3 +1,16 @@
-/.quarto/
+# Quarto output
 _site/
+*.html
+site_libs/
+
+# Quarto cache
+.quarto/
+
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# OS
 .DS_Store
