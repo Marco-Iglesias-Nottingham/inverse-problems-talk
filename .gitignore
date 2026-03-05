@@ -1,6 +1,6 @@
 # Quarto output
 _site/
-site_libs/
+
 
 # Quarto cache
 .quarto/
